@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>WePing.Girpe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="6.0.1" />
+    <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
+    <ProjectReference Include="..\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

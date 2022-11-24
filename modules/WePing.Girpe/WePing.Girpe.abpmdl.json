@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "WePing.Girpe.Domain.Shared": {
+      "path": "src/WePing.Girpe.Domain.Shared/WePing.Girpe.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Domain": {
+      "path": "src/WePing.Girpe.Domain/WePing.Girpe.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Application.Contracts": {
+      "path": "src/WePing.Girpe.Application.Contracts/WePing.Girpe.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Application": {
+      "path": "src/WePing.Girpe.Application/WePing.Girpe.Application.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.EntityFrameworkCore": {
+      "path": "src/WePing.Girpe.EntityFrameworkCore/WePing.Girpe.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.MongoDB": {
+      "path": "src/WePing.Girpe.MongoDB/WePing.Girpe.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.HttpApi": {
+      "path": "src/WePing.Girpe.HttpApi/WePing.Girpe.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.HttpApi.Client": {
+      "path": "src/WePing.Girpe.HttpApi.Client/WePing.Girpe.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.TestBase": {
+      "path": "test/WePing.Girpe.TestBase/WePing.Girpe.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.EntityFrameworkCore.Tests": {
+      "path": "test/WePing.Girpe.EntityFrameworkCore.Tests/WePing.Girpe.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.MongoDB.Tests": {
+      "path": "test/WePing.Girpe.MongoDB.Tests/WePing.Girpe.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.Domain.Tests": {
+      "path": "test/WePing.Girpe.Domain.Tests/WePing.Girpe.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.Application.Tests": {
+      "path": "test/WePing.Girpe.Application.Tests/WePing.Girpe.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.HttpApi.Host": {
+      "path": "host/WePing.Girpe.HttpApi.Host/WePing.Girpe.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.Web": {
+      "path": "src/WePing.Girpe.Web/WePing.Girpe.Web.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/WePing.Girpe.HttpApi.Client.ConsoleTestApp/WePing.Girpe.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.Girpe.Web.Host": {
+      "path": "host/WePing.Girpe.Web.Host/WePing.Girpe.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.AuthServer": {
+      "path": "host/WePing.Girpe.AuthServer/WePing.Girpe.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.Host.Shared": {
+      "path": "host/WePing.Girpe.Host.Shared/WePing.Girpe.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.Web.Unified": {
+      "path": "host/WePing.Girpe.Web.Unified/WePing.Girpe.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.Blazor": {
+      "path": "src/WePing.Girpe.Blazor/WePing.Girpe.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Blazor.Host": {
+      "path": "host/WePing.Girpe.Blazor.Host/WePing.Girpe.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.Girpe.Blazor.Server": {
+      "path": "src/WePing.Girpe.Blazor.Server/WePing.Girpe.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Blazor.WebAssembly": {
+      "path": "src/WePing.Girpe.Blazor.WebAssembly/WePing.Girpe.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.Girpe.Blazor.Server.Host": {
+      "path": "host/WePing.Girpe.Blazor.Server.Host/WePing.Girpe.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

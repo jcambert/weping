@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>WePing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WePing.Application.Contracts\WePing.Application.Contracts.csproj" />
+  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.HttpApi\WePing.SmartPing.HttpApi.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.HttpApi\WePing.Girpe.HttpApi.csproj" /></ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="6.0.1" />
+  </ItemGroup>
+
+</Project>

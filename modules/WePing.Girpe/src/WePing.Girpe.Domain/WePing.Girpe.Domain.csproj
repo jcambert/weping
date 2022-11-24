@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>WePing.Girpe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="6.0.1" />
+    <ProjectReference Include="..\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

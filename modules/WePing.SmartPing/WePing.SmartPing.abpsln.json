@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "WePing.SmartPing": {
+      "path": "WePing.SmartPing.abpmdl.json"
+    }
+  }
+}

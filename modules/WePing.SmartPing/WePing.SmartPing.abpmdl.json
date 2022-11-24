@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "WePing.SmartPing.Domain.Shared": {
+      "path": "src/WePing.SmartPing.Domain.Shared/WePing.SmartPing.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Domain": {
+      "path": "src/WePing.SmartPing.Domain/WePing.SmartPing.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Application.Contracts": {
+      "path": "src/WePing.SmartPing.Application.Contracts/WePing.SmartPing.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Application": {
+      "path": "src/WePing.SmartPing.Application/WePing.SmartPing.Application.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.EntityFrameworkCore": {
+      "path": "src/WePing.SmartPing.EntityFrameworkCore/WePing.SmartPing.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.MongoDB": {
+      "path": "src/WePing.SmartPing.MongoDB/WePing.SmartPing.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.HttpApi": {
+      "path": "src/WePing.SmartPing.HttpApi/WePing.SmartPing.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.HttpApi.Client": {
+      "path": "src/WePing.SmartPing.HttpApi.Client/WePing.SmartPing.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.TestBase": {
+      "path": "test/WePing.SmartPing.TestBase/WePing.SmartPing.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.EntityFrameworkCore.Tests": {
+      "path": "test/WePing.SmartPing.EntityFrameworkCore.Tests/WePing.SmartPing.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.MongoDB.Tests": {
+      "path": "test/WePing.SmartPing.MongoDB.Tests/WePing.SmartPing.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.Domain.Tests": {
+      "path": "test/WePing.SmartPing.Domain.Tests/WePing.SmartPing.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.Application.Tests": {
+      "path": "test/WePing.SmartPing.Application.Tests/WePing.SmartPing.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.HttpApi.Host": {
+      "path": "host/WePing.SmartPing.HttpApi.Host/WePing.SmartPing.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.Web": {
+      "path": "src/WePing.SmartPing.Web/WePing.SmartPing.Web.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/WePing.SmartPing.HttpApi.Client.ConsoleTestApp/WePing.SmartPing.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.SmartPing.Web.Host": {
+      "path": "host/WePing.SmartPing.Web.Host/WePing.SmartPing.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.AuthServer": {
+      "path": "host/WePing.SmartPing.AuthServer/WePing.SmartPing.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.Host.Shared": {
+      "path": "host/WePing.SmartPing.Host.Shared/WePing.SmartPing.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.Web.Unified": {
+      "path": "host/WePing.SmartPing.Web.Unified/WePing.SmartPing.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.Blazor": {
+      "path": "src/WePing.SmartPing.Blazor/WePing.SmartPing.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Blazor.Host": {
+      "path": "host/WePing.SmartPing.Blazor.Host/WePing.SmartPing.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.SmartPing.Blazor.Server": {
+      "path": "src/WePing.SmartPing.Blazor.Server/WePing.SmartPing.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Blazor.WebAssembly": {
+      "path": "src/WePing.SmartPing.Blazor.WebAssembly/WePing.SmartPing.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.SmartPing.Blazor.Server.Host": {
+      "path": "host/WePing.SmartPing.Blazor.Server.Host/WePing.SmartPing.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

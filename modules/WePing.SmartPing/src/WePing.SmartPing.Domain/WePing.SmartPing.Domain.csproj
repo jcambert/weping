@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>WePing.SmartPing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="6.0.1" />
+    <ProjectReference Include="..\WePing.SmartPing.Domain.Shared\WePing.SmartPing.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
