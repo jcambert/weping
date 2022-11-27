@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
@@ -17,7 +18,10 @@ public class GirpeEntityFrameworkCoreTestModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        var sqliteConnection = CreateDatabaseAndGetConnection();
+        var configuration = context.Services.GetConfiguration();
+        var mode = configuration["db_test:mode"];
+        var connstring = configuration[$"db_test:ConnectionStrings:{mode}"];
+        var sqliteConnection = CreateDatabaseAndGetConnection(connstring);
 
         Configure<AbpDbContextOptions>(options =>
         {
@@ -28,9 +32,9 @@ public class GirpeEntityFrameworkCoreTestModule : AbpModule
         });
     }
 
-    private static SqliteConnection CreateDatabaseAndGetConnection()
+    private static SqliteConnection CreateDatabaseAndGetConnection(string connstring= "Data Source=:memory:")
     {
-        var connection = new SqliteConnection("Data Source=:memory:");
+        var connection = new SqliteConnection(connstring);
         connection.Open();
 
         new GirpeDbContext(

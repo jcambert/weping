@@ -4,9 +4,10 @@ using Volo.Abp.AutoMapper;
 using WePing.Girpe.Clubs;
 using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Domain;
+using WePing.Girpe.Domain.Clubs.Queries;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.SmartPing.Domain.Joueurs.Dto;
-
+using SP_QUERY = WePing.SmartPing.Domain.Clubs.Queries;
 namespace WePing.Girpe;
 
 public class GirpeApplicationAutoMapperProfile : Profile
@@ -98,5 +99,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .Ignore(x => x.ClubId)
             .Ignore(x=>x.Classement)
             ;
+
+        CreateMap<BrowseClubQuery, SP_QUERY.BrowseClubsQuery>();
     }
 }

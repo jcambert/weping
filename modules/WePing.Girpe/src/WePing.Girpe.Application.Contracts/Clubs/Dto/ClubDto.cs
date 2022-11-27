@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Volo.Abp.Application.Dtos;
 using WePing.Girpe.Joueurs.Dto;
 
 namespace WePing.Girpe.Clubs.Dto;
 
+[DebuggerDisplay("{Numero}:{Nom}")]
 public class ClubDto : AuditedEntityDto<Guid>
 {
     #region info @see Smartping.ClubDto

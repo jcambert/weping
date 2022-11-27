@@ -9,9 +9,9 @@ namespace WePing.Girpe.Clubs;
 public interface IClubAppService :IApplicationService
     
 {
-    Task<List<ClubDto>> GetAllAsync();
+    Task<BrowseClubResponse> GetAllAsync(IBrowseClubQuery query);
 
-    Task<ClubDto> GetAsync(IGetClubQuery query);
+    Task<GetClubResponse> GetAsync(IGetClubQuery query);
 
     
 }

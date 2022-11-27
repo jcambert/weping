@@ -1,9 +1,12 @@
-﻿namespace WePing.Girpe;
+﻿using Mediator;
+
+namespace WePing.Girpe;
 public interface IBaseGirpeQuery
 {
 
 }
-public interface IGirpeQuery:IBaseGirpeQuery
+public interface IGirpeQuery<TResponse>:IBaseGirpeQuery, IRequest<TResponse>
+    where TResponse : class
 {
 }
 

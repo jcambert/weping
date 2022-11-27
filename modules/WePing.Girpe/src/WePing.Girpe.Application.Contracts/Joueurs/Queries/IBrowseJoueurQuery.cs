@@ -5,7 +5,7 @@ using WePing.Girpe.Joueurs.Dto;
 
 namespace WePing.Girpe.Joueurs.Queries;
 
-public interface IBrowseJoueurQuery : IGirpeQuery, IRequest<BrowseJoueurResponse>
+public interface IBrowseJoueurQuery : IGirpeQuery<BrowseJoueurResponse>
 {
     Guid ClubId { get; set; }
 

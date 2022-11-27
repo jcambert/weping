@@ -49,18 +49,35 @@ public class GirpeAppService_Tests: GirpeApplicationTestBase
     {
         var query1 = GetRequiredService<IGetClubQuery>();
         query1.Numero = args[0];
-        var club = await _clubService.GetAsync(query1);
-        Assert.NotNull(club);
-        Assert.True(club.Numero == args[0]);
+        var response = await _clubService.GetAsync(query1);
+        Assert.NotNull(response.Club);
+        Assert.True(response.Club.Numero == args[0]);
 
         var club1 = await _clubService.GetAsync(query1);
 
         var query2 = GetRequiredService<IBrowseJoueurQuery>();
-        query2.ClubId = club.Id;
+        query2.ClubId = response.Club.Id;
         query2.ClubNumero = args[0];
         List<JoueurDto> joueurs = (await _joueurService.GetForClub(query2)).Joueurs;
         Assert.NotNull(joueurs);
         Assert.True(joueurs.Count > 0);
 
+    }
+
+    [Theory]
+    [InlineData("90")]
+    public async Task BrowseAllClub(params string[] args)
+    {
+        var query = GetRequiredService<IBrowseClubQuery>();
+        query.Dep = args[0];
+        var res=await _clubService.GetAllAsync(query);
+        Assert.NotNull(res.Clubs);
+        Assert.True(res.Clubs.Count > 0);
+        Assert.False(res.FromDatabase);
+
+         res = await _clubService.GetAllAsync(query);
+        Assert.NotNull(res.Clubs);
+        Assert.True(res.Clubs.Count > 0);
+        Assert.True(res.FromDatabase);
     }
 }

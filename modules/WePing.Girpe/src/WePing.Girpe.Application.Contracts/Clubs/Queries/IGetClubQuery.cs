@@ -3,7 +3,7 @@ using WePing.Girpe.Clubs.Dto;
 
 namespace WePing.Girpe.Clubs.Queries;
 
-public interface IGetClubQuery : IGirpeQuery, IRequest<GetClubResponse>
+public interface IGetClubQuery : IGirpeQuery<GetClubResponse>
 {
     string Numero { get; set; }
 }
