@@ -3,7 +3,8 @@
 namespace WePing.SmartPing.Spid.Handlers;
 
 public abstract class BaseRequestHandler<TQuery, TResponse, TDomain> : IRequestHandler<TQuery, TResponse>
-    where TQuery : IRequest<TResponse>
+    where TQuery : class, ISpidRequestQuery<TResponse>
+    where TResponse:Response
 {
 
     public ISpidRequestAppService RequestService { get; init; }

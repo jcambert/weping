@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
-using WePing.Girpe.Clubs;
+using WePing.Girpe.Domain;
 
 namespace WePing.Girpe.EntityFrameworkCore;
 
@@ -15,6 +15,11 @@ public static class GirpeDbContextModelCreatingExtensions
         builder.Entity<Club>(b =>
         {
             b.ToTable(GirpeDbProperties.DbTablePrefix + "Club", GirpeDbProperties.DbSchema);
+            b.ConfigureByConvention();
+        });
+        builder.Entity<Joueur>(b =>
+        {
+            b.ToTable(GirpeDbProperties.DbTablePrefix + "Joueur", GirpeDbProperties.DbSchema);
             b.ConfigureByConvention();
         });
         /* Configure all entities here. Example:

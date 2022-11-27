@@ -3,6 +3,10 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using WePing.SmartPing;
+using WePing.Girpe.Clubs.Queries;
+using WePing.Girpe.Domain.Clubs.Queries;
+using WePing.Girpe.Joueurs.Queries;
+using WePing.Girpe.Domain.Joueurs;
 
 namespace WePing.Girpe;
 
@@ -22,5 +26,11 @@ public class GirpeApplicationModule : AbpModule
         {
             options.AddMaps<GirpeApplicationModule>(validate: true);
         });
+        context.Services.AddTransient<IBrowseClubQuery, BrowseClubQuery>();
+        context.Services.AddTransient<IGetClubQuery, GetClubQuery>();
+        context.Services.AddTransient<IBrowseJoueurQuery, BrowseJoueurQuery>();
+        context.Services.AddTransient<IGetJoueurQuery,GetJoueurQuery>();
+        
+        //context.Services.AddMediator();
     }
 }

@@ -9,7 +9,7 @@ namespace WePing.SmartPing.Spid;
 internal static  class SpidExtensions
 {
     public static Dictionary<string, string> ToDictionnary<T>(this T o,bool ignoreIfNull=true)
-        where T: ISpidRequestQuery
+        where T: IBaseSpidRequestQuery
     {
         var result = new Dictionary<string, string>();
         var props = o.GetType().GetProperties();

@@ -1,25 +1,28 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Polly.Extensions.Http;
 using Polly;
+using Polly.Extensions.Http;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
-using WePing.SmartPing.Spid;
-using WePing.SmartPing.Domain.Clubs.Queries;
-using WePing.SmartPing.Spid.Domain.Clubs.Queries;
 using WePing.SmartPing.Domain.ClubDetails.Queries;
-using WePing.SmartPing.Spid.Domain.ClubDetails.Queries;
-using WePing.SmartPing.Domain.Organismes.Queries;
-using WePing.SmartPing.Spid.Domain.Organismes.Queries;
-using System.Net.NetworkInformation;
-using WePing.SmartPing.Spid.Handlers.Organismes;
-using WePing.SmartPing.Domain.Epreuves.Queries;
-using WePing.SmartPing.Spid.Domain.Epreuves.Queries;
-using WePing.SmartPing.Spid.Handlers.Epreuves;
+using WePing.SmartPing.Domain.Clubs.Queries;
 using WePing.SmartPing.Domain.Divisions.Queries;
+using WePing.SmartPing.Domain.Epreuves.Queries;
+using WePing.SmartPing.Domain.Joueurs.Queries;
+using WePing.SmartPing.Domain.Organismes.Queries;
+using WePing.SmartPing.Spid;
+using WePing.SmartPing.Spid.Domain.ClubDetails.Queries;
+using WePing.SmartPing.Spid.Domain.Clubs.Queries;
 using WePing.SmartPing.Spid.Domain.Divisions.Queries;
+using WePing.SmartPing.Spid.Domain.Epreuves.Queries;
+using WePing.SmartPing.Spid.Domain.Joueurs.Queries;
+using WePing.SmartPing.Spid.Domain.Organismes.Queries;
 using WePing.SmartPing.Spid.Handlers.Divisions;
+using WePing.SmartPing.Spid.Handlers.Epreuves;
+using WePing.SmartPing.Spid.Handlers.Joueurs;
+using WePing.SmartPing.Spid.Handlers.Organismes;
 
 namespace WePing.SmartPing;
 
@@ -56,17 +59,16 @@ public class SmartPingApplicationModule : AbpModule
             .SetHandlerLifetime(TimeSpan.FromSeconds(httpLifetime))
             .AddPolicyHandler(GetRetryPolicy(retryCount));
 
-        context.Services.AddMediator();
-        context.Services.AddSingleton<IPipelineBehavior<BrowseOrganismeQuery, BrowseOrganismeResponse>, OrganismeValidator>();
-        context.Services.AddSingleton<IPipelineBehavior<BrowseEpreuveQuery, BrowseEpreuveResponse>, EpreuveValidator>();
-        context.Services.AddSingleton<IPipelineBehavior<BrowseDivisionQuery, BrowseDivisionResponse>, DivisionValidator>();
-        context.Services.AddTransient(typeof(IDeserializeService<>),typeof( DeserializeService<>));
-        context.Services.AddTransient<IBrowseClubsQuery, BrowseClubsQuery>();
-        context.Services.AddTransient<IGetClubQuery, GetClubQuery>();
-        context.Services.AddTransient<IGetClubDetailQuery, GetClubDetailQuery>();
-        context.Services.AddTransient<IBrowseOrganismeQuery, BrowseOrganismeQuery>();
-        context.Services.AddTransient<IBrowseEpreuveQuery, BrowseEpreuveQuery>();
-        context.Services.AddTransient<IBrowseDivisionQuery, BrowseDivisionQuery>();
+        //Mediator Must registered in main app
+        //Cause it has is code auto-generated
+       // context.Services.AddMediator();
+        
+
+        context.Services.AddTransient(typeof(IDeserializeService<>), typeof(DeserializeService<>));
+
+        context.Services
+            .RegisterValidators()
+            .RegisterQueries();
     }
 
     static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(int retryCount)
@@ -75,5 +77,39 @@ public class SmartPingApplicationModule : AbpModule
             .HandleTransientHttpError()
             .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
             .WaitAndRetryAsync(retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,retryAttempt)));
+    }
+}
+
+internal static class SmartPingApplicationModuleExtension
+{
+    internal static IServiceCollection RegisterQueries(this IServiceCollection services)
+    {
+        
+        services.AddTransient<IBrowseClubsQuery, BrowseClubsQuery>();
+        services.AddTransient<IGetClubQuery, GetClubQuery>();
+        services.AddTransient<IGetClubDetailQuery, GetClubDetailQuery>();
+        services.AddTransient<IBrowseOrganismeQuery, BrowseOrganismeQuery>();
+        services.AddTransient<IBrowseEpreuveQuery, BrowseEpreuveQuery>();
+        services.AddTransient<IBrowseDivisionQuery, BrowseDivisionQuery>();
+        services.AddTransient<IBrowseJoueurClassementQuery, BrowseJoueurClassementQuery>();
+        services.AddTransient<IGetJoueurDetailClassementQuery, GetJoueurDetailClassementQuery>();
+        services.AddTransient<IGetJoueurDetailSpidQuery, GetJoueurDetailSpidQuery>();
+        services.AddTransient<IGetJoueurDetailSpidClaQuery, GetJoueurDetailSpidClaQuery>();
+        services.AddTransient<IBrowseJoueurDetailSpidClaQuery, BrowseJoueurDetailSpidClaQuery>();
+        services.AddTransient<IBrowseJoueurSpidQuery, BrowseJoueurSpidQuery>();
+        services.AddTransient<IGetQuery, GetQuery>();
+        return services;
+    }
+
+    internal static IServiceCollection RegisterValidators(this IServiceCollection services)
+    {
+        services.AddSingleton<IPipelineBehavior<BrowseOrganismeQuery, BrowseOrganismeResponse>, OrganismeValidator>();
+        services.AddSingleton<IPipelineBehavior<BrowseEpreuveQuery, BrowseEpreuveResponse>, EpreuveValidator>();
+        services.AddSingleton<IPipelineBehavior<BrowseDivisionQuery, BrowseDivisionResponse>, DivisionValidator>();
+        services.AddSingleton<IPipelineBehavior<BrowseJoueurClassementQuery, BrowseJoueurClassementResponse>, JoueurClassementValidator>();
+        services.AddSingleton<IPipelineBehavior<GetJoueurDetailClassementQuery, GetJoueurDetailClassementResponse>, JoueurDetailClassementValidator>();
+        services.AddSingleton<IPipelineBehavior<GetJoueurDetailSpidQuery, GetJoueurDetailSpidResponse>, JoueurDetailSpidValidator>();
+        services.AddSingleton<IPipelineBehavior<BrowseJoueurSpidQuery, BrowseJoueurSpidResponse>, JoueurSpidValidator>();
+        return services;
     }
 }

@@ -1,10 +1,15 @@
 ﻿using System.Threading.Tasks;
+using Mediator;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WePing.Girpe.Samples;
 
 public class SampleAppService : GirpeAppService, ISampleAppService
 {
+    public SampleAppService(IMediator mediator) : base(mediator)
+    {
+    }
+
     public Task<SampleDto> GetAsync()
     {
         return Task.FromResult(

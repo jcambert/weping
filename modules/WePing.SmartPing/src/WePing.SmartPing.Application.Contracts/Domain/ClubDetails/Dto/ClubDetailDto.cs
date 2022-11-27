@@ -2,8 +2,6 @@
 
 public class ClubDetailDto
 {
-    #region public properties
-
 
     public string Id { get; set; }
 
@@ -35,7 +33,4 @@ public class ClubDetailDto
 
     public string Longitude { get; set; }
 
-
-
-    #endregion
 }

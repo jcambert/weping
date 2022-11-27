@@ -4,7 +4,7 @@ using WePing.SmartPing.Spid;
 
 namespace WePing.SmartPing.Domain.Clubs.Queries;
 
-public interface IBrowseClubsQuery : ISpidRequestQuery,IRequest<BrowseClubResponse>
+public interface IBrowseClubsQuery : ISpidRequestQuery<BrowseClubResponse>
 {
     string Dep { get; set; }
 
@@ -16,4 +16,4 @@ public interface IBrowseClubsQuery : ISpidRequestQuery,IRequest<BrowseClubRespon
 
 }
 
-public sealed record BrowseClubResponse(List<Club> clubs);
+public sealed record BrowseClubResponse(List<Club> clubs):Response;

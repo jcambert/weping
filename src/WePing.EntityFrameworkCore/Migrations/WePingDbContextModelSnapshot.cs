@@ -1462,7 +1462,7 @@ namespace WePing.Migrations
                     b.ToTable("AbpTenantConnectionStrings", (string)null);
                 });
 
-            modelBuilder.Entity("WePing.Girpe.Clubs.Club", b =>
+            modelBuilder.Entity("WePing.Girpe.Domain.Club", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1480,34 +1480,8 @@ namespace WePing.Migrations
                     b.Property<string>("CodePostalSalle")
                         .HasColumnType("text");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("text")
-                        .HasColumnName("ExtraProperties");
-
                     b.Property<string>("Identifiant")
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("LastModifierId");
 
                     b.Property<string>("Latitude")
                         .HasColumnType("text");
@@ -1548,6 +1522,85 @@ namespace WePing.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GirpeClub", (string)null);
+                });
+
+            modelBuilder.Entity("WePing.Girpe.Domain.Joueur", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AncienPointsMensuel")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Arbitre")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CategorieAge")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CertificatMedical")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Classement")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ClubId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("DateDeValidationDuCertificatMedical")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Echelon")
+                        .HasColumnType("text");
+
+                    b.Property<string>("JugeArbitre")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Licence")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LicenceId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Mutation")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nationnalite")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nom")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Place")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PointClassement")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PointsInitials")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PointsMensuel")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Prenom")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Sexe")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Tech")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClubId");
+
+                    b.ToTable("GirpeJoueur", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -1692,6 +1745,17 @@ namespace WePing.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WePing.Girpe.Domain.Joueur", b =>
+                {
+                    b.HasOne("WePing.Girpe.Domain.Club", "Club")
+                        .WithMany("Joueurs")
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Club");
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
                     b.Navigation("Actions");
@@ -1730,6 +1794,11 @@ namespace WePing.Migrations
             modelBuilder.Entity("Volo.Abp.TenantManagement.Tenant", b =>
                 {
                     b.Navigation("ConnectionStrings");
+                });
+
+            modelBuilder.Entity("WePing.Girpe.Domain.Club", b =>
+                {
+                    b.Navigation("Joueurs");
                 });
 #pragma warning restore 612, 618
         }

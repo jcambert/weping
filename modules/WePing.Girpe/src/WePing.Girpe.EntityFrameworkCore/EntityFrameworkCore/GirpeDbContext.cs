@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using WePing.Girpe.Clubs;
+using WePing.Girpe.Domain;
 
 namespace WePing.Girpe.EntityFrameworkCore;
 
@@ -12,6 +12,8 @@ public class GirpeDbContext : AbpDbContext<GirpeDbContext>, IGirpeDbContext
      * public DbSet<Question> Questions { get; set; }
      */
     public DbSet<Club> Clubs { get; set; }
+    public DbSet<Joueur> Joueurs { get; set; }
+
     public GirpeDbContext(DbContextOptions<GirpeDbContext> options)
         : base(options)
     {

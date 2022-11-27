@@ -6,7 +6,7 @@ using WePing.SmartPing.Spid;
 
 namespace WePing.SmartPing.Domain.Divisions.Queries;
 
-public interface IBrowseDivisionQuery : ISpidRequestQuery, IRequest<BrowseDivisionResponse>
+public interface IBrowseDivisionQuery : ISpidRequestQuery<BrowseDivisionResponse>
 {
     public string Organisme { get; set; }
 
@@ -15,4 +15,4 @@ public interface IBrowseDivisionQuery : ISpidRequestQuery, IRequest<BrowseDivisi
     public string Type { get; set; }
 }
 
-public sealed record BrowseDivisionResponse(List<Division> Divisions);
+public sealed record BrowseDivisionResponse(List<Division> Divisions):Response;

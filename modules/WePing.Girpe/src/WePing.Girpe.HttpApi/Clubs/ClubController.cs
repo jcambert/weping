@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
+using WePing.Girpe.Clubs.Dto;
+using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Samples;
 using WePing.SmartPing;
 namespace WePing.Girpe.Clubs;
@@ -26,22 +28,8 @@ public class ClubController : GirpeController, IClubAppService
     public Task<List<ClubDto>> GetAllAsync()=>Service.GetAllAsync();
 
     [HttpGet]
-    public Task<ClubDto> GetAsync(Guid id)=>Service.GetAsync(id);
+    public Task<ClubDto> GetAsync([FromQuery] IGetClubQuery query)=>Service.GetAsync(query);
 
-    [HttpGet]
-    [Route("bynumber")]
-    public Task<ClubDto> GetByNumero(string numero)=>Service.GetByNumero(numero);
+    
 
-    /* [HttpPost]
-     public Task<ClubDto> CreateAsync(CreateUpdateClubDto input)=>Service.CreateAsync(input);
-
-     [HttpDelete]
-     public Task DeleteAsync(Guid id)=>Service.DeleteAsync(id);
-
-     [HttpGet("{id}")]
-     public Task<ClubDto> GetAsync(Guid id)=>Service.GetAsync(id);
-     [HttpGet]
-     public Task<PagedResultDto<ClubDto>> GetListAsync([FromQuery]PagedAndSortedResultRequestDto input)=>Service.GetListAsync(input);
-     [HttpPut]
-     public Task<ClubDto> UpdateAsync(Guid id, CreateUpdateClubDto input)=>Service.UpdateAsync(id,input);*/
 }

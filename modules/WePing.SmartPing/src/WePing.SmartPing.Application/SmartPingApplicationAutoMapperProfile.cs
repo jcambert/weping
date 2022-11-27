@@ -7,6 +7,8 @@ using WePing.SmartPing.Domain.Divisions.Domain;
 using WePing.SmartPing.Domain.Divisions.Dto;
 using WePing.SmartPing.Domain.Epreuves.Domain;
 using WePing.SmartPing.Domain.Epreuves.Dto;
+using WePing.SmartPing.Domain.Joueurs.Domain;
+using WePing.SmartPing.Domain.Joueurs.Dto;
 using WePing.SmartPing.Domain.Organismes.Domain;
 using WePing.SmartPing.Domain.Organismes.Dto;
 
@@ -24,5 +26,10 @@ public class SmartPingApplicationAutoMapperProfile : Profile
         this.CreateMap<Organisme, OrganismeDto>();
         this.CreateMap<Epreuve, EpreuveDto>();
         this.CreateMap<Division, DivisionDto>();
+        this.CreateMap<JoueurClassement, JoueurClassementDto>();
+        this.CreateMap<JoueurDetailClassement, JoueurDetailClassementDto>();
+        this.CreateMap<JoueurDetailSpid, JoueurDetailSpidDto>();
+        this.CreateMap<JoueurDetailSpidCla, JoueurDetailSpidClaDto>();
+        this.CreateMap<JoueurSpid, JoueurSpidDto>();
     }
 }

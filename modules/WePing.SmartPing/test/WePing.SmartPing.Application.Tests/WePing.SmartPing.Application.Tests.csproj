@@ -32,6 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mediator.SourceGenerator" Version="1.0.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <ProjectReference Include="..\..\src\WePing.SmartPing.Application\WePing.SmartPing.Application.csproj" />
     <ProjectReference Include="..\WePing.SmartPing.Domain.Tests\WePing.SmartPing.Domain.Tests.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />

@@ -14,10 +14,7 @@
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.1" />
     <ProjectReference Include="..\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.SmartPing.Domain\WePing.SmartPing.Domain.csproj" />
-    <PackageReference Include="Mediator.SourceGenerator" Version="1.0.*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+
     <PackageReference Include="Mediator.Abstractions" Version="1.0.*" />
   </ItemGroup>
 

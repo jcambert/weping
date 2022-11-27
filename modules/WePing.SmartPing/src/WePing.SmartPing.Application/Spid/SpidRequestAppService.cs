@@ -26,21 +26,21 @@ public class SpidRequestAppService:SmartPingAppService, ISpidRequestAppService
 
     }
 
-	public async Task<byte[]> GetByteAsync(ISpidRequestQuery query,string api_endpoint,CancellationToken cancellationToken=default)
+	public async Task<byte[]> GetByteAsync(IBaseSpidRequestQuery query,string api_endpoint,CancellationToken cancellationToken=default)
 	{
         var url =await  GetQueryAsync(query, api_endpoint);
         //Logger.Log(Microsoft.Extensions.Logging.LogLevel.Trace,)
         var resp = await Client.GetAsync(url, cancellationToken);
         return await resp.Content.ReadAsByteArrayAsync();
     }
-    public async  Task<Stream> GetStreamAsync(ISpidRequestQuery query, string api_endpoint, CancellationToken cancellationToken = default)
+    public async  Task<Stream> GetStreamAsync(IBaseSpidRequestQuery query, string api_endpoint, CancellationToken cancellationToken = default)
     {
         var url = await GetQueryAsync(query, api_endpoint);
         var resp = await Client.GetAsync(url,cancellationToken);
         return await resp.Content.ReadAsStreamAsync();
     }
 
-    public async Task<string> GetAsync(ISpidRequestQuery query, string api_endpoint, CancellationToken cancellationToken = default)
+    public async Task<string> GetAsync(IBaseSpidRequestQuery query, string api_endpoint, CancellationToken cancellationToken = default)
      {
         var url =await  GetQueryAsync(query, api_endpoint);
         var resp = await Client.GetAsync(url,cancellationToken);
@@ -48,7 +48,7 @@ public class SpidRequestAppService:SmartPingAppService, ISpidRequestAppService
     }
 
    
-    public async Task<string> GetQueryAsync(ISpidRequestQuery query, string api_endpoint)
+    public async Task<string> GetQueryAsync(IBaseSpidRequestQuery query, string api_endpoint)
         => EndPointsOptions[api_endpoint] +await GetParameters(query.ToDictionnary());
     private async Task<string> GetParameters(IDictionary<string, string> opts = null)
     {
@@ -62,5 +62,5 @@ public class SpidRequestAppService:SmartPingAppService, ISpidRequestAppService
         return result;
     }
 
-   
+ 
 }

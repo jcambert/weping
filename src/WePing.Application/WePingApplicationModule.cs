@@ -8,7 +8,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using WePing.SmartPing;
 using WePing.Girpe;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace WePing;
 
 [DependsOn(
@@ -31,5 +31,7 @@ namespace WePing;
         {
             options.AddMaps<WePingApplicationModule>();
         });
+
+        context.Services.AddMediator();
     }
 }

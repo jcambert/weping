@@ -1,5 +1,5 @@
 ﻿using Volo.Abp.Modularity;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace WePing.SmartPing;
 
 [DependsOn(
@@ -8,5 +8,9 @@ namespace WePing.SmartPing;
     )]
 public class SmartPingApplicationTestModule : AbpModule
 {
-
+    public override void ConfigureServices(ServiceConfigurationContext context)
+    {
+        base.ConfigureServices(context);
+        context.Services.AddMediator();
+    }
 }

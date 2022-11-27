@@ -5,7 +5,9 @@ using WePing.SmartPing.Domain.ClubDetails.Queries;
 using WePing.SmartPing.Domain.Clubs.Queries;
 using WePing.SmartPing.Domain.Divisions.Queries;
 using WePing.SmartPing.Domain.Epreuves.Queries;
+using WePing.SmartPing.Domain.Joueurs.Queries;
 using WePing.SmartPing.Domain.Organismes.Queries;
+using WePing.SmartPing.Spid.Handlers.Joueurs;
 using Xunit;
 
 namespace WePing.SmartPing.Spid;
@@ -140,9 +142,7 @@ public class SpidRequestAppService_Tests : SmartPingApplicationTestBase
         Assert.NotNull(query);
         query.Type = "Z";
 
-        //Func<IBrowseEpreuveQuery,Task<List<EpreuveDto>>> fn=(q)=>_appService.GetEpreuves(q);
-        Func<Task> act = () => _appService.GetEpreuves(query);
-        //var epreuves = await _appService.GetEpreuves(query);
+        Task act() => _appService.GetEpreuves(query);
         await Assert.ThrowsAsync<ArgumentException>(act);
 
 
@@ -180,4 +180,142 @@ public class SpidRequestAppService_Tests : SmartPingApplicationTestBase
         var divisions = await _appService.GetDivisions(query1);
         Assert.NotNull(divisions);
     }
+
+    [Theory]
+    [InlineData("02900041")]
+    public async Task BrowseJoueurClassementQueryTest(params string[] args)
+    {
+        var query = GetRequiredService<IBrowseJoueurClassementQuery>();
+        Assert.NotNull(query);
+        query.Club = args[0];
+
+        var joueurs = await _appService.GetJoueursClassement(query);
+        Assert.NotNull(joueurs);
+        Assert.True(joueurs.Count > 0);
+        Assert.True(joueurs.First().NumeroClub == args[0]);
+    }
+
+    [Fact]
+    public async Task BrowseJoueurClassementQueryValidationExceptionTest()
+    {
+        var query = GetRequiredService<IBrowseJoueurClassementQuery>();
+        Assert.NotNull(query);
+
+        Task act() => _appService.GetJoueursClassement(query);
+        await Assert.ThrowsAsync<ArgumentException>(act);
+
+    }
+
+    [Theory]
+    [InlineData("905821")]
+    public async Task BrowseJoueurDetailClassementQueryTest(params string[] args)
+    {
+        var query = GetRequiredService<IGetJoueurDetailClassementQuery>();
+        Assert.NotNull(query);
+        query.Licence    = args[0];
+
+        var joueur = await _appService.GetJoueurDetail(query);
+        Assert.NotNull(joueur);
+        Assert.True(joueur.Licence == args[0]);
+    }
+
+    [Fact]
+    public async Task BrowseJoueurDetailClassementQueryValidationExceptionTest()
+    {
+        var query = GetRequiredService<IGetJoueurDetailClassementQuery>();
+        Assert.NotNull(query);
+
+        Task act() => _appService.GetJoueurDetail(query);
+        await Assert.ThrowsAsync<ArgumentException>(act);
+
+    }
+
+    [Theory]
+    [InlineData("905821")]
+    public async Task GetJoueurDetailSpidQueryTest(params string[] args)
+    {
+        var query = GetRequiredService<IGetJoueurDetailSpidQuery>();
+        Assert.NotNull(query);
+        query.Licence = args[0];
+
+        var joueur = await _appService.GetJoueurDetail(query);
+        Assert.NotNull(joueur);
+        Assert.True(joueur.Licence == args[0]);
+    }
+
+    [Fact]
+    public async Task GetJoueurDetailSpidQueryValidationExceptionTest()
+    {
+        var query = GetRequiredService<IGetJoueurDetailSpidQuery>();
+        Assert.NotNull(query);
+
+        Task act() => _appService.GetJoueurDetail(query);
+        await Assert.ThrowsAsync<ArgumentException>(act);
+
+    }
+
+    [Theory]
+    [InlineData("905821")]
+    public async Task GetJoueurDetailSpidClaQueryTest(params string[] args)
+    {
+        var query = GetRequiredService<IGetJoueurDetailSpidClaQuery>();
+        Assert.NotNull(query);
+        query.Licence = args[0];
+
+        var joueur = await _appService.GetJoueurDetail(query);
+        Assert.NotNull(joueur);
+        Assert.True(joueur.Licence == args[0]);
+    }
+
+    [Theory]
+    [InlineData("02900041")]
+    public async Task BrowseJoueurDetailSpidClaQueryTest(params string[] args)
+    {
+        var query = GetRequiredService<IBrowseJoueurDetailSpidClaQuery>();
+        Assert.NotNull(query);
+        query.Club = args[0];
+
+        var query_url = GetRequiredService<IGetQuery>();
+        Assert.NotNull(query_url);
+        query_url.Query = query;
+        query_url.EndPoint = BrowseJoueurDetailSpidClaHandler.API_ENDPOINT;
+        var url_=await _appService.GetQuery(query_url);
+        Assert.False(string.IsNullOrEmpty(url_));
+
+       
+        var joueur = await _appService.GetJoueursDetail(query);
+        Assert.NotNull(joueur);
+        Assert.True(joueur.Count>0);
+    }
+
+
+
+    [Theory]
+    [InlineData("02900041")]
+    public async Task BrowseJoueurSpidQueryTest(params string[] args )
+    {
+        var query = GetRequiredService<IBrowseJoueurSpidQuery>();
+        Assert.NotNull(query);
+        query.Club = args[0];
+
+        var joueurs = await _appService.GetJoueursSpid(query);
+        Assert.NotNull(joueurs);
+        Assert.True(joueurs.Count > 0);
+        Assert.True(joueurs.First().NumeroClub == args[0]);
+    }
+
+
+
+    [Fact]
+    public async Task BrowseJoueurSpidQueryValidationExceptionTest()
+    {
+        var query = GetRequiredService<IBrowseJoueurSpidQuery>();
+        Assert.NotNull(query);
+        query.Valid = "1233211";
+
+        Task act() => _appService.GetJoueursSpid(query);
+        await Assert.ThrowsAsync<ArgumentException>(act);
+
+    }
+
 }

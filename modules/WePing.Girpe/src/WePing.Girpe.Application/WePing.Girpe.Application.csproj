@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mediator.Abstractions" Version="1.0.*" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.1" />
     <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
