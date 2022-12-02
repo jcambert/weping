@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
 
 namespace WePing.Girpe;
-
+/*
 public enum FilterOperator
 {
     EQ,
@@ -203,4 +203,4 @@ internal class HelperClass<T>
     }
 
 
-}
+}*/

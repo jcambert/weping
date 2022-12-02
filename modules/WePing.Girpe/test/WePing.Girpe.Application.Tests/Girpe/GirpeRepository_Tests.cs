@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Repositories;
 using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Domain;
 using Xunit;
-
+using WeUtilities;
 namespace WePing.Girpe.Girpe;
 
 public class GirpeRepository_Tests : GirpeApplicationTestBase
