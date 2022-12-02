@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.5" />
+    <ProjectReference Include="..\..\src\WePing.Girpe.Application.Contracts\WePing.Girpe.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\src\WePing.Girpe.EntityFrameworkCore\WePing.Girpe.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\WePing.Girpe.TestBase\WePing.Girpe.TestBase.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="6.0.1" />

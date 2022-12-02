@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
-using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Clubs.Queries;
 
 namespace WePing.Girpe.Clubs;

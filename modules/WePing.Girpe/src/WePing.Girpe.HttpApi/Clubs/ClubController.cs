@@ -25,11 +25,20 @@ public class ClubController : GirpeController, IClubAppService
 
     [HttpGet]
     [Route("all")]
-    public Task<List<ClubDto>> GetAllAsync()=>Service.GetAllAsync();
+    public Task<BrowseClubResponse> GetAllAsync([FromQuery] IBrowseClubQuery query) =>Service.GetAllAsync(query);
+
 
     [HttpGet]
-    public Task<ClubDto> GetAsync([FromQuery] IGetClubQuery query)=>Service.GetAsync(query);
+    public Task<GetClubResponse> GetAsync([FromQuery] IGetClubQuery query)=>Service.GetAsync(query);
 
     
 
 }
+/*
+public static class TaskExtensions
+{
+    public static Task<TTO> As<TFROM,TTO>(this Task<TFROM> from)
+    {
+        return default(Task<TTO>);
+    }
+}*/

@@ -101,5 +101,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
             ;
 
         CreateMap<BrowseClubQuery, SP_QUERY.BrowseClubsQuery>();
+
+        
     }
 }

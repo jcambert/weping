@@ -15,6 +15,7 @@ public interface IBrowseClubQuery : IGirpeQuery<BrowseClubResponse>
     string Ville { get; set; }
 
     string Numero { get; set; }
+    int Number { get; set; }
 }
 
 public sealed record BrowseClubResponse(List<ClubDto> Clubs): GirpeResponse;

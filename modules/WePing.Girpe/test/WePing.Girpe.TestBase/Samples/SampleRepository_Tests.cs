@@ -18,9 +18,5 @@ public abstract class SampleRepository_Tests<TStartupModule> : GirpeTestBase<TSt
         //_sampleRepository = GetRequiredService<ISampleRepository>();
     }
 
-    [Fact]
-    public async Task Method1Async()
-    {
 
-    }
 }

@@ -12,9 +12,4 @@ public class SampleManager_Tests : GirpeDomainTestBase
         //_sampleManager = GetRequiredService<SampleManager>();
     }
 
-    [Fact]
-    public async Task Method1Async()
-    {
-
-    }
 }

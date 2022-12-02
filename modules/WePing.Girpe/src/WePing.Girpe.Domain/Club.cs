@@ -11,6 +11,8 @@ public class Club:Entity<Guid>
 
     public string Numero { get; set; }
 
+    public int Number { get; set; }
+
     public string Nom { get; set; }
 
     public string Validation { get; set; }

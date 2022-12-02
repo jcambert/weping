@@ -13,6 +13,8 @@
     <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain\WePing.Girpe.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\Generators\WeQueryableGeneratorExtensions\WeQueryableGeneratorExtensions.csproj" OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

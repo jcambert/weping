@@ -29,6 +29,7 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
         //Get the IQueryable<Club> from the repository
         var queryable = await Repository.GetQueryableAsync();
 
+
         //Prepare a query to join books and authors
         var query = from joueur in queryable where joueur.ClubId == request.ClubId select joueur;
 
@@ -36,19 +37,25 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
         var queryResult = await AsyncExecuter.ToListAsync(query);
 
         List<JoueurDto> joueursDto = new();
-        if (queryResult == null ||queryResult.Count==0)
+        if (queryResult == null || queryResult.Count == 0)
         {
             //Joueurs not exist in database
             //Retrieve it from SPID 
-             joueursDto = await GetJoueursClassementFromSpid(request.ClubNumero);
+            joueursDto = await GetJoueursClassementFromSpid(request.ClubNumero);
             if (joueursDto.Count > 0)
             {
+                //while club didn't exist in DB, insert it!
+                var joueurs = ObjectMapper.Map<List<JoueurDto>, List<Joueur>>(joueursDto);
+                await Repository.InsertManyAsync(joueurs);
 
-            //while club didn't exist in DB, insert it!
+                return new BrowseJoueurResponse(ObjectMapper.Map<List<Joueur>, List<JoueurDto>>(joueurs)) { FromDatabase = false };
             }
+            else
+                return new BrowseJoueurResponse(new()) { FromDatabase = false };
+
         }
 
-        return new BrowseJoueurResponse( joueursDto);
+        return new BrowseJoueurResponse(joueursDto) { FromDatabase = true };
     }
     protected async Task<List<JoueurDto>> GetJoueursClassementFromSpid(string numeroClub)
     {
@@ -57,7 +64,7 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
 
         var joueurs = await Spid.GetJoueursClassement(query);
 
-        var res=ObjectMapper.Map<List<JoueurClassementDto>, List<JoueurDto>>(joueurs);
+        var res = ObjectMapper.Map<List<JoueurClassementDto>, List<JoueurDto>>(joueurs);
         return res;
     }
 
