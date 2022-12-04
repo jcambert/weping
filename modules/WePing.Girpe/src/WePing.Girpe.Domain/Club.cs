@@ -51,4 +51,6 @@ public class Club:Entity<Guid>
     #region Joueurs
     public virtual List<Joueur> Joueurs { get;  set; } = new();
     #endregion
+
+    public string Departement => CodePostalSalle?.Substring(0,2) ?? string.Empty;
 }

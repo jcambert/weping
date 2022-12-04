@@ -29,7 +29,7 @@ public class BrowseClubHandler : BaseHandler<BrowseClubQuery, BrowseClubResponse
 
         //Get the IQueryable<Club> from the repository
         var queryable = await Repository.GetQueryableAsync();
-        queryable=queryable.Filter(x=>x.Numero,request.Numero);
+        //queryable=queryable.Filter(x=>x.Numero,request.Numero);
 
         if (!string.IsNullOrEmpty(request.Numero))
             queryable = queryable.Where(x => x.Numero == request.Numero);

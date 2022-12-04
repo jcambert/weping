@@ -39,6 +39,7 @@
     <ProjectReference Include="..\..\src\WePing.Girpe.Application\WePing.Girpe.Application.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain.Tests\WePing.Girpe.Domain.Tests.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <ProjectReference Include="..\..\..\..\Generators\WeQueryableGeneratorExtensions\WeQueryableGeneratorExtensions.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using WePing.Girpe.Clubs.Dto;
-using WePing.Girpe.Domain;
 
 namespace WePing.Girpe.Clubs.Queries;
 

@@ -95,11 +95,11 @@ public enum FilterOperator
 
         public void Initialize(GeneratorInitializationContext context)
         {
-
+/*
 #if DEBUG
             if (!Debugger.IsAttached)
                 Debugger.Launch();
-#endif
+#endif*/
 
         }
 
