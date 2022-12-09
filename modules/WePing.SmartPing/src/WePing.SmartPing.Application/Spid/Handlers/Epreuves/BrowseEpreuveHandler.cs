@@ -10,7 +10,7 @@ public class BrowseEpreuveHandler : BaseRequestHandler<BrowseEpreuveQuery, Brows
     {
     }
 
-    public override async ValueTask<BrowseEpreuveResponse> Handle(BrowseEpreuveQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseEpreuveResponse> Handle(BrowseEpreuveQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream = await RequestService.GetStreamAsync(request, "epreuves", cancellationToken);
         var data = Deserializer.To(result_as_stream);

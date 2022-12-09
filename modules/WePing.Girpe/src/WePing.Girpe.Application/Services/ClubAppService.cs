@@ -1,9 +1,6 @@
 ﻿
-using Mediator;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using WePing.Girpe.Clubs;
-using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Clubs.Queries;
 
 namespace WePing.Girpe.Services;
@@ -12,7 +9,7 @@ public class ClubAppService :
         GirpeAppService,
         IClubAppService
 {
-
+ 
     public ClubAppService(IMediator mediator) : base(mediator) { }
 
     public async Task<GetClubResponse> GetAsync(IGetClubQuery query)

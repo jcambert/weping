@@ -1,7 +1,5 @@
-﻿using Mediator;
+﻿
 using WePing.SmartPing.Domain.Divisions.Domain;
-using WePing.SmartPing.Domain.Epreuves.Domain;
-using WePing.SmartPing.Domain.Epreuves.Queries;
 using WePing.SmartPing.Spid;
 
 namespace WePing.SmartPing.Domain.Divisions.Queries;

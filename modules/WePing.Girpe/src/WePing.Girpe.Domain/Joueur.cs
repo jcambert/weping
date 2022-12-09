@@ -1,7 +1,8 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities;
+using WePing.Girpe.Domain;
 
-namespace WePing.Girpe.Domain;
+namespace WePing.Girpe.Joueurs;
 
 public class Joueur : Entity<Guid>
 {
@@ -9,16 +10,16 @@ public class Joueur : Entity<Guid>
     {
 
     }
-  
 
-    public  Guid ClubId { get;  set; }
-    public Club Club { get; set; }
-    public  string Licence { get; set; }
-    public  string Nom { get; set; }
-    public  string Prenom { get; set; }
+
+    public Guid ClubId { get; set; }
+    public Club Club { get; set; }=new Club();
+    public string Licence { get; set; }
+    public string Nom { get; set; }
+    public string Prenom { get; set; }
     //public virtual string NumeroClub { get; set; }
     //public virtual string NomClub { get; set; }
-    public  string Classement { get; set; }
+    public string Classement { get; set; }
 
     #region @see SmartPing.JoueurDetailSpidCla
     public string LicenceId { get; set; }

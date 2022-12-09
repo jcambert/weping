@@ -1,6 +1,6 @@
 ﻿using WePing.Girpe.Joueurs.Queries;
 
-namespace WePing.Girpe.Domain.Joueurs;
+namespace WePing.Girpe.Joueurs;
 
 public class GetJoueurQuery : IGetJoueurQuery
 {

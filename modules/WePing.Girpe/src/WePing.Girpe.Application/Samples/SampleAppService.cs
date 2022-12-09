@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Mediator;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace WePing.Girpe.Samples;
 

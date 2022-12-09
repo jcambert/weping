@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WePing.SmartPing.Domain.Joueurs.Queries;
-using WePing.SmartPing.Domain.Organismes.Queries;
+﻿using WePing.SmartPing.Domain.Joueurs.Queries;
 using WePing.SmartPing.Spid.Domain.Joueurs.Queries;
-using WePing.SmartPing.Spid.Domain.Organismes.Queries;
 
 namespace WePing.SmartPing.Spid.Handlers.Joueurs;
 
@@ -16,11 +9,13 @@ public class JoueurClassementValidator : IPipelineBehavior<BrowseJoueurClassemen
     {
     }
 
-    public ValueTask<BrowseJoueurClassementResponse> Handle(BrowseJoueurClassementQuery request, CancellationToken cancellationToken, MessageHandlerDelegate<BrowseJoueurClassementQuery, BrowseJoueurClassementResponse> next)
+
+    public Task<BrowseJoueurClassementResponse> Handle(BrowseJoueurClassementQuery request, RequestHandlerDelegate<BrowseJoueurClassementResponse> next, CancellationToken cancellationToken)
     {
         if (request == null || string.IsNullOrEmpty(request.Club) && string.IsNullOrEmpty(request.Nom))
             throw new ArgumentException("You must specify NumeroClub or Nom");
-        return next(request, cancellationToken);
-
+        return next();
+       // return next(request, cancellationToken);
+        //throw new NotImplementedException();
     }
 }

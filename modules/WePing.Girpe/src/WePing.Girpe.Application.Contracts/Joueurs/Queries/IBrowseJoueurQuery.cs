@@ -1,5 +1,4 @@
-﻿using Mediator;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using WePing.Girpe.Joueurs.Dto;
 

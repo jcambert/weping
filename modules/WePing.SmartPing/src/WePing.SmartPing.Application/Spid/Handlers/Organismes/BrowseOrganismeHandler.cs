@@ -10,7 +10,7 @@ public class BrowseOrganismeHandler : BaseRequestHandler<BrowseOrganismeQuery, B
     {
     }
 
-    public override async ValueTask<BrowseOrganismeResponse> Handle(BrowseOrganismeQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseOrganismeResponse> Handle(BrowseOrganismeQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream = await RequestService.GetStreamAsync(request, "organismes", cancellationToken);
         var data = Deserializer.To(result_as_stream);

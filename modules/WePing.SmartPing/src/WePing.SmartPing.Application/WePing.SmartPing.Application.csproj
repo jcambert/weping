@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.0" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="6.0.1" />
@@ -15,7 +17,7 @@
     <ProjectReference Include="..\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.SmartPing.Domain\WePing.SmartPing.Domain.csproj" />
 
-    <PackageReference Include="Mediator.Abstractions" Version="1.0.*" />
+   
   </ItemGroup>
 
 </Project>

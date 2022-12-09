@@ -80,4 +80,15 @@ public class GirpeAppService_Tests: GirpeApplicationTestBase
         Assert.True(res.Clubs.Count > 0);
         Assert.True(res.FromDatabase);
     }
+
+    [Theory]
+    [InlineData("02900041")]
+    public  async Task GetClub(params string[] args)
+    {
+        var query = GetRequiredService<IGetClubQuery>();
+        query.Numero = args[0];
+        var res=await _clubService.GetAsync(query);
+        Assert.NotNull(res);
+        Assert.True(res.Club.Numero == args[0]);
+    }
 }

@@ -8,7 +8,6 @@ using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Clubs.Queries;
-using WePing.Girpe.Domain.Clubs.Queries;
 using WePing.SmartPing.Spid;
 using GIRPE_DOMAIN = WePing.Girpe.Domain;
 using SP_DTO = WePing.SmartPing.Domain.Clubs.Dto;
@@ -24,7 +23,7 @@ public class BrowseClubHandler : BaseHandler<BrowseClubQuery, BrowseClubResponse
     {
     }
 
-    public override async ValueTask<BrowseClubResponse> Handle(BrowseClubQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseClubResponse> Handle(BrowseClubQuery request, CancellationToken cancellationToken)
     {
 
         //Get the IQueryable<Club> from the repository

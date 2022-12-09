@@ -10,7 +10,7 @@ public class BrowsDivisionHandler : BaseRequestHandler<BrowseDivisionQuery, Brow
     {
     }
 
-    public async override ValueTask<BrowseDivisionResponse> Handle(BrowseDivisionQuery request, CancellationToken cancellationToken)
+    public async override Task<BrowseDivisionResponse> Handle(BrowseDivisionQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream = await RequestService.GetStreamAsync(request, "division", cancellationToken);
         var data = Deserializer.To(result_as_stream);

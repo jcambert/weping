@@ -1,4 +1,4 @@
-﻿using Mediator;
+﻿
 using WePing.SmartPing.Domain.Joueurs.Domain;
 using WePing.SmartPing.Spid;
 

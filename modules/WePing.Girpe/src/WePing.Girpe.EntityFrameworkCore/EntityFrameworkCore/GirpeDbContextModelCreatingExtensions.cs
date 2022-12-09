@@ -2,6 +2,7 @@
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using WePing.Girpe.Domain;
+using WePing.Girpe.Joueurs;
 
 namespace WePing.Girpe.EntityFrameworkCore;
 

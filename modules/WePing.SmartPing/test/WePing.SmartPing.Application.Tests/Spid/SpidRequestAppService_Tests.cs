@@ -80,15 +80,17 @@ public class SpidRequestAppService_Tests : SmartPingApplicationTestBase
         Assert.True(clubs.Count>0);
     }
 
-    [Fact]
-    public async Task GetClubQueryTest()
+    [Theory]
+    [InlineData("02900041")]
+    public async Task GetClubQueryTest(params string[] args)
     {
         var query = GetRequiredService<IGetClubQuery>();
         Assert.NotNull(query);
-        query.Numero="02900041";
+        query.Numero=args[0];
 
         var club = await _appService.GetClub(query);
         Assert.NotNull(club);
+        Assert.True(club.Numero == query.Numero);
     }
 
     [Fact]

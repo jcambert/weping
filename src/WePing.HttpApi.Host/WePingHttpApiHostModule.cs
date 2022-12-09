@@ -28,9 +28,12 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
+using MediatR;
+using WePing.Girpe;
+using WePing.SmartPing;
+using System.Reflection;
 
 namespace WePing;
-
 [DependsOn(
     typeof(WePingHttpApiModule),
     typeof(AbpAutofacModule),
@@ -49,6 +52,8 @@ public class WePingHttpApiHostModule : AbpModule
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
+        context.Services.AddMediator(typeof(SmartPingApplicationModule).GetTypeInfo().Assembly, typeof(GirpeApplicationModule).GetTypeInfo().Assembly);
+
         ConfigureConventionalControllers();
         ConfigureAuthentication(context, configuration);
         ConfigureLocalization();
@@ -58,6 +63,8 @@ public class WePingHttpApiHostModule : AbpModule
         ConfigureDistributedLocking(context, configuration);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
+
+        
     }
 
     private void ConfigureCache(IConfiguration configuration)

@@ -1,13 +1,11 @@
-﻿using Mediator;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
-using WePing.Girpe.Domain;
-using WePing.Girpe.Domain.Joueurs;
+using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
 using WePing.SmartPing.Domain.Joueurs.Dto;
@@ -24,7 +22,7 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
     {
     }
 
-    public override async ValueTask<BrowseJoueurResponse> Handle(BrowseJoueurQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseJoueurResponse> Handle(BrowseJoueurQuery request, CancellationToken cancellationToken)
     {
         //Get the IQueryable<Club> from the repository
         var queryable = await Repository.GetQueryableAsync();
@@ -47,8 +45,9 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
                 //while club didn't exist in DB, insert it!
                 var joueurs = ObjectMapper.Map<List<JoueurDto>, List<Joueur>>(joueursDto);
                 await Repository.InsertManyAsync(joueurs);
-
-                return new BrowseJoueurResponse(ObjectMapper.Map<List<Joueur>, List<JoueurDto>>(joueurs)) { FromDatabase = false };
+                joueursDto.Clear();
+                ObjectMapper.Map<List<Joueur>, List<JoueurDto>>(joueurs, joueursDto);
+                return new BrowseJoueurResponse(joueursDto) { FromDatabase = false };
             }
             else
                 return new BrowseJoueurResponse(new()) { FromDatabase = false };

@@ -9,11 +9,12 @@ public class JoueurDetailClassementValidator : IPipelineBehavior<GetJoueurDetail
     {
     }
 
-    public ValueTask<GetJoueurDetailClassementResponse> Handle(GetJoueurDetailClassementQuery request, CancellationToken cancellationToken, MessageHandlerDelegate<GetJoueurDetailClassementQuery, GetJoueurDetailClassementResponse> next)
+    public Task<GetJoueurDetailClassementResponse> Handle(GetJoueurDetailClassementQuery request, RequestHandlerDelegate<GetJoueurDetailClassementResponse> next, CancellationToken cancellationToken)
     {
         if (request == null || string.IsNullOrEmpty(request.Licence) )
             throw new ArgumentException("You must specify Licence");
-        return next(request, cancellationToken);
-
+        return next();
+        //return next(request, cancellationToken);
+        //throw new NotImplementedException();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Mediator;
-using WePing.Girpe.Joueurs.Dto;
+﻿using WePing.Girpe.Joueurs.Dto;
 
 namespace WePing.Girpe.Joueurs.Queries;
 

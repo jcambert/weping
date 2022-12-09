@@ -11,7 +11,7 @@ public class GetClubHandler : BaseRequestHandler<GetClubQuery, GetClubResponse, 
     {
     }
 
-    public override async ValueTask<GetClubResponse> Handle(GetClubQuery request, CancellationToken cancellationToken)
+    public override async Task<GetClubResponse> Handle(GetClubQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream = await RequestService.GetStreamAsync(request, "club_liste", cancellationToken);
         var data = Deserializer.To(result_as_stream);

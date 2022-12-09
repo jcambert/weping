@@ -1,4 +1,4 @@
-﻿using Mediator;
+﻿
 
 namespace WePing.SmartPing.Spid;
 public interface IBaseSpidRequestQuery { }

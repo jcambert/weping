@@ -1,17 +1,12 @@
-﻿using Mediator;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
-using Volo.Abp.ObjectMapping;
-using WePing.Girpe.Clubs;
 using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Clubs.Queries;
-using WePing.Girpe.Domain;
-using WePing.Girpe.Domain.Joueurs;
+using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
 using WePing.SmartPing.Domain.Joueurs.Dto;
@@ -29,7 +24,7 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
     {
     }
 
-    public override async ValueTask<GetJoueurResponse> Handle(GetJoueurQuery request, CancellationToken cancellationToken)
+    public override async Task<GetJoueurResponse> Handle(GetJoueurQuery request, CancellationToken cancellationToken)
     {
         // Get the IQueryable<Club> from the repository
         var queryable = await Repository.GetQueryableAsync();

@@ -1,10 +1,8 @@
-﻿using Mediator;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using WePing.SmartPing.Domain.Epreuves.Queries;
 using WePing.SmartPing.Spid.Domain.Epreuves.Queries;
-using WePing.SmartPing.Spid.Handlers.Organismes;
 
 namespace WePing.SmartPing.Spid.Handlers.Epreuves;
 
@@ -19,11 +17,13 @@ public class EpreuveValidator : IPipelineBehavior<BrowseEpreuveQuery, BrowseEpre
         AvailableEpreuves = Configuration.GetSection("AvailableEpreuves").Get<List<AvailableEpreuves>>();
     }
 
-    public ValueTask<BrowseEpreuveResponse> Handle(BrowseEpreuveQuery request, CancellationToken cancellationToken, MessageHandlerDelegate<BrowseEpreuveQuery, BrowseEpreuveResponse> next)
+    public Task<BrowseEpreuveResponse> Handle(BrowseEpreuveQuery request, RequestHandlerDelegate<BrowseEpreuveResponse> next, CancellationToken cancellationToken)
     {
         if (request is null || (AvailableEpreuves != null && AvailableEpreuves.Count > 0 && !AvailableEpreuves.Select(x => x.Type).Any(x => x == request.Type)))
             throw new ArgumentException("Invalid Epreuve Type");
-        return next(request, cancellationToken);
+        return next();
+       // return next(request, cancellationToken);
+        //throw new NotImplementedException();
     }
 }
 

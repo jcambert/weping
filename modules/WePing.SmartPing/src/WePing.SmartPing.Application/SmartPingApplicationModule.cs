@@ -59,9 +59,8 @@ public class SmartPingApplicationModule : AbpModule
             .SetHandlerLifetime(TimeSpan.FromSeconds(httpLifetime))
             .AddPolicyHandler(GetRetryPolicy(retryCount));
 
-        //Mediator Must registered in main app
-        //Cause it has is code auto-generated
-       // context.Services.AddMediator();
+        
+        
         
 
         context.Services.AddTransient(typeof(IDeserializeService<>), typeof(DeserializeService<>));
@@ -69,6 +68,8 @@ public class SmartPingApplicationModule : AbpModule
         context.Services
             .RegisterValidators()
             .RegisterQueries();
+
+       // context.Services.AddMediatR(typeof(SmartPingApplicationModule).GetType().Assembly);
     }
 
     static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(int retryCount)

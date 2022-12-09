@@ -28,11 +28,12 @@ public class GirpeHttpApiModule : AbpModule
                 .Get<GirpeResource>()
                 .AddBaseTypes(typeof(AbpUiResource));
         });
-       /* Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options
-                .ConventionalControllers
-                .Create(typeof(GirpeApplicationContractsModule).Assembly);
-        });*/
+        
+        /* Configure<AbpAspNetCoreMvcOptions>(options =>
+         {
+             options
+                 .ConventionalControllers
+                 .Create(typeof(GirpeApplicationContractsModule).Assembly);
+         });*/
     }
 }

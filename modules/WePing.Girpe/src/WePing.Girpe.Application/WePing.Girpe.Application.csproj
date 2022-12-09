@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -8,15 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mediator.Abstractions" Version="1.0.*" />
+   
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+   
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+   
     <PackageReference Include="Volo.Abp.AutoMapper" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.1" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeAutoMapper\WeAutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeMediatr\WeMediatr.csproj" />
     <ProjectReference Include="..\..\..\..\Utilities\WeUtilities\WeUtilities.csproj" />
     <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application\WePing.SmartPing.Application.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Application.Contracts\WePing.Girpe.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain\WePing.Girpe.Domain.csproj" />
-    <ProjectReference Include="..\..\..\..\Generators\WeQueryableGeneratorExtensions\WeQueryableGeneratorExtensions.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    
   </ItemGroup>
 
 </Project>

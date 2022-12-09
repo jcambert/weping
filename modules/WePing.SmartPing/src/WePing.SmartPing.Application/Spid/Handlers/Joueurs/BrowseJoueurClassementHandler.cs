@@ -9,7 +9,7 @@ public class BrowseJoueurClassementHandler : BaseRequestHandler<BrowseJoueurClas
 
     public BrowseJoueurClassementHandler(ISpidRequestAppService requestService, IDeserializeService<ListeJoueursClassement> deserializer) : base(requestService, deserializer) { }
 
-    public override async ValueTask<BrowseJoueurClassementResponse> Handle(BrowseJoueurClassementQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseJoueurClassementResponse> Handle(BrowseJoueurClassementQuery request, CancellationToken cancellationToken)
     {
        
         var result_as_stream = await RequestService.GetStreamAsync(request, "joueur_liste_cla", cancellationToken);

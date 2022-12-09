@@ -1,5 +1,9 @@
 ﻿using Volo.Abp.Modularity;
 using Microsoft.Extensions.DependencyInjection;
+using MediatR;
+using System.Reflection;
+using WePing.SmartPing;
+
 namespace WePing.Girpe;
 
 [DependsOn(
@@ -12,6 +16,7 @@ public class GirpeApplicationTestModule : AbpModule
     {
         base.ConfigureServices(context);
 
-        context.Services.AddMediator();
+        //context.Services.AddMediator();
+        context.Services.AddMediatR(typeof(SmartPingApplicationModule).GetTypeInfo().Assembly, typeof(GirpeApplicationModule).GetTypeInfo().Assembly);
     }
 }

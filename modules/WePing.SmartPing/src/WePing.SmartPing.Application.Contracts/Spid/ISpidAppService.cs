@@ -1,4 +1,5 @@
 ﻿
+
 using WePing.SmartPing.Domain.ClubDetails.Dto;
 using WePing.SmartPing.Domain.ClubDetails.Queries;
 using WePing.SmartPing.Domain.Clubs.Dto;

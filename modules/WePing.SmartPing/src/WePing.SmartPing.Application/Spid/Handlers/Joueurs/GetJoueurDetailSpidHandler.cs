@@ -11,7 +11,7 @@ public class GetJoueurDetailSpidHandler : BaseRequestHandler<GetJoueurDetailSpid
     {
     }
 
-    public override async ValueTask<GetJoueurDetailSpidResponse> Handle(GetJoueurDetailSpidQuery request, CancellationToken cancellationToken)
+    public override async Task<GetJoueurDetailSpidResponse> Handle(GetJoueurDetailSpidQuery request, CancellationToken cancellationToken)
     {
         var url = await RequestService.GetQueryAsync(request, "joueur_licence_spid");
         var result_as_stream = await RequestService.GetStreamAsync(request, "joueur_licence_spid", cancellationToken);

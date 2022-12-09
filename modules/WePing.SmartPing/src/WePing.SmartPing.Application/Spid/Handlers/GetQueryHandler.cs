@@ -1,6 +1,4 @@
-﻿using WePing.SmartPing.Domain.Joueurs.Queries;
-
-namespace WePing.SmartPing.Spid.Handlers;
+﻿namespace WePing.SmartPing.Spid.Handlers;
 
 public class GetQueryHandler : IRequestHandler<GetQuery, SpidRequestResponse>
 {
@@ -10,7 +8,7 @@ public class GetQueryHandler : IRequestHandler<GetQuery, SpidRequestResponse>
     {
         this._requestService=requestService;
     }
-    public async ValueTask<SpidRequestResponse> Handle(GetQuery request, CancellationToken cancellationToken)
+    public async Task<SpidRequestResponse> Handle(GetQuery request, CancellationToken cancellationToken)
     {
         var result = await _requestService.GetQueryAsync(request.Query,request.EndPoint);
         

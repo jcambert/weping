@@ -1,5 +1,4 @@
-﻿using Mediator;
-using WePing.SmartPing.Domain.Organismes.Domain;
+﻿using WePing.SmartPing.Domain.Organismes.Domain;
 using WePing.SmartPing.Spid;
 
 namespace WePing.SmartPing.Domain.Organismes.Queries;

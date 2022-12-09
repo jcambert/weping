@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -8,15 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Utilities\WeAutoMapper\WeAutoMapper.csproj" />
     <ProjectReference Include="..\WePing.Domain\WePing.Domain.csproj" />
     <ProjectReference Include="..\WePing.Application.Contracts\WePing.Application.Contracts.csproj" />
   <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Application\WePing.SmartPing.Application.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Application\WePing.Girpe.Application.csproj" /></ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mediator.SourceGenerator" Version="1.0.*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    
     <PackageReference Include="Volo.Abp.Account.Application" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.Identity.Application" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="6.0.1" />

@@ -1,8 +1,6 @@
-﻿using Mediator;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Linq;
 using Volo.Abp.ObjectMapping;
@@ -24,5 +22,5 @@ public abstract class BaseHandler<TQuery, TResponse> : IRequestHandler<TQuery, T
         ObjectMapperContext == null
             ? provider.GetRequiredService<IObjectMapper>()
             : (IObjectMapper)provider.GetRequiredService(typeof(IObjectMapper<>).MakeGenericType(ObjectMapperContext)));
-    public abstract ValueTask<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
+    public abstract Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
 }

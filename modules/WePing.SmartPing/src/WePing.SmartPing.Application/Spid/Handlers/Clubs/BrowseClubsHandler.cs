@@ -8,7 +8,7 @@ public class BrowseClubsHandler : BaseRequestHandler<BrowseClubsQuery, BrowseClu
 
     public BrowseClubsHandler(ISpidRequestAppService requestService, IDeserializeService<ListeClubs> deserializer) : base(requestService, deserializer) { }
     
-    public override async ValueTask<BrowseClubResponse> Handle(BrowseClubsQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseClubResponse> Handle(BrowseClubsQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream=await RequestService.GetStreamAsync(request, "club_liste",cancellationToken);
         var data=Deserializer.To(result_as_stream);

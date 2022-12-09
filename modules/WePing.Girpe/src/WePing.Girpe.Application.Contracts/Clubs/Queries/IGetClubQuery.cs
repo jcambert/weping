@@ -1,5 +1,4 @@
-﻿using Mediator;
-using WePing.Girpe.Clubs.Dto;
+﻿using WePing.Girpe.Clubs.Dto;
 
 namespace WePing.Girpe.Clubs.Queries;
 

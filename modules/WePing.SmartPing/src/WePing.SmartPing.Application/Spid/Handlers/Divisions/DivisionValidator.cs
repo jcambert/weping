@@ -1,4 +1,4 @@
-﻿using Mediator;
+﻿
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +18,12 @@ public class DivisionValidator : IPipelineBehavior<BrowseDivisionQuery, BrowseDi
         Configuration = configuration;
         AvailableEpreuves = Configuration.GetSection("AvailableEpreuves").Get<List<AvailableEpreuves>>();
     }
-    public ValueTask<BrowseDivisionResponse> Handle(BrowseDivisionQuery request, CancellationToken cancellationToken, MessageHandlerDelegate<BrowseDivisionQuery, BrowseDivisionResponse> next)
+
+    public Task<BrowseDivisionResponse> Handle(BrowseDivisionQuery request, RequestHandlerDelegate<BrowseDivisionResponse> next, CancellationToken cancellationToken)
     {
         if (request is null || (AvailableEpreuves != null && AvailableEpreuves.Count > 0 && !AvailableEpreuves.Select(x => x.Type).Any(x => x == request.Type)))
             throw new ArgumentException("Invalid Epreuve Type");
-        return next(request, cancellationToken);
+        return next();
+        //return next(request, cancellationToken);
     }
 }

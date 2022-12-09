@@ -2,8 +2,6 @@
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace WeQueryableGeneratorExtensions
@@ -21,7 +19,7 @@ namespace WeQueryableGeneratorExtensions
         LIKE
 
     }
-    [Generator]
+    /*[Generator]*/
     public class QueryExtensionGenerator : ISourceGenerator
     {
         GeneratorQueryableData numerics = GeneratorQueryableData.NumericDatas;
@@ -64,7 +62,7 @@ public enum FilterOperator
        {Helpers()}
     }}
     
-    public sealed record PropertyInformation(PropertyInfo PropertyInfo, Type PropertyType, string Name);
+    internal sealed record PropertyInformation(PropertyInfo PropertyInfo, Type PropertyType, string Name);
     internal class HelperClass<T>
     {{
         public static PropertyInformation Property<TProp>(Expression<Func<T, TProp>> expression)

@@ -1,8 +1,4 @@
-﻿using Mediator;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using WePing.Girpe.Joueurs;
-using WePing.Girpe.Joueurs.Dto;
+﻿using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Queries;
 
 namespace WePing.Girpe.Services;

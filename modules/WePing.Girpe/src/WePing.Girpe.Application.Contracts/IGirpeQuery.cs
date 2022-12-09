@@ -1,4 +1,4 @@
-﻿using Mediator;
+﻿
 
 namespace WePing.Girpe;
 public interface IBaseGirpeQuery

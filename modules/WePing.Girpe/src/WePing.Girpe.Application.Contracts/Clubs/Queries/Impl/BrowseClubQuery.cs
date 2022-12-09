@@ -1,9 +1,6 @@
-﻿using System;
-using WePing.Girpe.Clubs.Queries;
-using WeUtilities;
-namespace WePing.Girpe.Domain.Clubs.Queries;
+﻿namespace WePing.Girpe.Clubs.Queries;
 
-[Query]
+
 public class BrowseClubQuery : IBrowseClubQuery
 {
     public string Dep { get; set; }

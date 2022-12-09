@@ -11,5 +11,7 @@ public abstract class BaseRequestHandler<TQuery, TResponse, TDomain> : IRequestH
     public IDeserializeService<TDomain> Deserializer { get; init; }
    
     public BaseRequestHandler(ISpidRequestAppService requestService, IDeserializeService<TDomain> deserializer) => (RequestService, Deserializer) = (requestService, deserializer);
-    public abstract ValueTask<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
+    //public abstract ValueTask<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
+
+    public abstract Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
 }

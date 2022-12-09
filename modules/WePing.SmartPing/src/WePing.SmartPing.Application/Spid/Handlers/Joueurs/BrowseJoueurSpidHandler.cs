@@ -10,7 +10,7 @@ public class BrowseJoueurSpidHandler : BaseRequestHandler<BrowseJoueurSpidQuery,
     {
     }
 
-    public override async ValueTask<BrowseJoueurSpidResponse> Handle(BrowseJoueurSpidQuery request, CancellationToken cancellationToken)
+    public override async Task<BrowseJoueurSpidResponse> Handle(BrowseJoueurSpidQuery request, CancellationToken cancellationToken)
     {
         var result_as_stream = await RequestService.GetStreamAsync(request, "joueur_liste_spid", cancellationToken);
         var data = Deserializer.To(result_as_stream);

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities;
+using WePing.Girpe.Joueurs;
+using WeUtilities;
 
 namespace WePing.Girpe.Domain;
 
+[Queryable]
 public class Club:Entity<Guid>
 {
     #region info @see Smartping.ClubDto
@@ -11,7 +14,7 @@ public class Club:Entity<Guid>
 
     public string Numero { get; set; }
 
-    public int Number { get; set; }
+    
 
     public string Nom { get; set; }
 
