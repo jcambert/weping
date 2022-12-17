@@ -1,14 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
-using Volo.Abp.Application;
-using WePing.SmartPing;
 using WePing.Girpe.Clubs.Queries;
-using WePing.Girpe.Joueurs.Queries;
 using WePing.Girpe.Joueurs;
-using WePing.Girpe.Handlers.Clubs;
-using System.Reflection;
-using Microsoft.Extensions.Logging;
+using WePing.Girpe.Joueurs.Queries;
+using WePing.SmartPing;
 
 namespace WePing.Girpe;
 

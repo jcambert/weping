@@ -4,6 +4,7 @@ using System.Threading;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Linq;
 using Volo.Abp.ObjectMapping;
+using WePing.SmartPing.Spid;
 
 namespace WePing.Girpe.Handlers;
 
@@ -22,5 +23,9 @@ public abstract class BaseHandler<TQuery, TResponse> : IRequestHandler<TQuery, T
         ObjectMapperContext == null
             ? provider.GetRequiredService<IObjectMapper>()
             : (IObjectMapper)provider.GetRequiredService(typeof(IObjectMapper<>).MakeGenericType(ObjectMapperContext)));
+
+    protected ISpidAppService Spid => LazyServiceProvider.LazyGetRequiredService<ISpidAppService>();
+    protected IMediator Mediator => LazyServiceProvider.LazyGetRequiredService<IMediator>();
+
     public abstract Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
 }

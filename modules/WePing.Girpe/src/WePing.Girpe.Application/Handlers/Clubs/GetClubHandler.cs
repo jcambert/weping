@@ -33,7 +33,7 @@ public class GetClubHandler : BaseHandler<GetClubQuery, GetClubResponse>
         var queryable = await Repository.GetQueryableAsync();
 
         var mappedRequest=ObjectMapper.Map <GetClubQuery,Club>(request);
-        var pred=mappedRequest.GetPredicate();
+        //var pred=mappedRequest.GetPredicate();
         queryable = queryable.Filter(mappedRequest);
         //Prepare a query   
         //var query = from club in queryable where club.Numero == request.Numero select new { club };

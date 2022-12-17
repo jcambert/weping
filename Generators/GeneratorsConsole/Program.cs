@@ -36,14 +36,19 @@ public class Main
                 new Dto() { Identifiant = "6789", Name = "Name 6789" },
                 new Dto() { Identifiant = "12345", Name = "Name 12345" },
             };
-
+        
         var dtoMapped=_mapper.Map<Dto>(query);
 
         _logger.LogInformation($"query.Identifiant:{query.Identifiant} - dtoMapped.Identifiant:{dtoMapped.Identifiant}");
         
         var queryable = queries.AsQueryable();
-        queryable =queryable.Filter(dtoMapped);
-        _logger.LogInformation(queryable?.FirstOrDefault()?.Name ?? "NOTHING");
+        var queryable0 =queryable.Filter<Dto,string>(x=>x.Name,FilterOperator.EQ,"6789");
+        _logger.LogInformation(queryable0?.FirstOrDefault()?.Name ?? "NOTHING");
+
+        
+        var queryable1 = queryable.Filter(dtoMapped);
+        _logger.LogInformation(queryable1?.FirstOrDefault()?.Name ?? "NOTHING");
+
         _logger.LogInformation("Test Is End");
      }
 }

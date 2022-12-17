@@ -1,12 +1,16 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace WeQueryableGeneratorExtensions
 {
-    public enum FilterOperator
+    internal enum FilterOperator
     {
         EQ,
         NEQ,
@@ -19,15 +23,27 @@ namespace WeQueryableGeneratorExtensions
         LIKE
 
     }
-    /*[Generator]*/
+    [Generator]
     public class QueryExtensionGenerator : ISourceGenerator
     {
+        private const string DEFAULT_NAMESPACE="WeUtilities";
         GeneratorQueryableData numerics = GeneratorQueryableData.NumericDatas;
         GeneratorQueryableData strings = GeneratorQueryableData.StringDatas;
         public void Execute(GeneratorExecutionContext context)
         {
+            var module = context.Compilation
+            .SyntaxTrees
+            .SelectMany(syntaxTree => syntaxTree.GetRoot().DescendantNodes())
+            .Where(x => x is ClassDeclarationSyntax)
+            .Cast<ClassDeclarationSyntax>()
+            .Where(c => c.Identifier.ValueText.EndsWith("Module", StringComparison.OrdinalIgnoreCase))
+            .FirstOrDefault();
+
+            var mainNamespace = module?.GetNamespaceFrom();
+
             // Find the main method
             var mainMethod = context.Compilation.GetEntryPoint(context.CancellationToken);
+
             var syntaxTree = context.Compilation.SyntaxTrees;
 
             string className = "QueryableExtensions";
@@ -41,7 +57,7 @@ using System.Data;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
-namespace WeUtilities
+namespace {mainNamespace?? DEFAULT_NAMESPACE}
 {{
 public enum FilterOperator
 {{
@@ -98,7 +114,7 @@ public enum FilterOperator
             if (!Debugger.IsAttached)
                 Debugger.Launch();
 #endif*/
-
+            //context.RegisterForSyntaxNotifications(() => new MainClassSyntaxReceiver());
         }
 
 
@@ -180,7 +196,7 @@ public enum FilterOperator
         }
     }
 
-    public class GeneratorQueryableData
+    internal class GeneratorQueryableData
     {
         public GeneratorQueryableData(List<(FilterOperator, string)> operators, List<(Type, string)> types)
         {
@@ -203,4 +219,18 @@ public enum FilterOperator
             new List<(Type, string)>() { (typeof(string), "string") }
             );
     }
+
+    /*internal class MainClassSyntaxReceiver : ISyntaxReceiver
+    {
+        public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
+        {
+            if (syntaxNode is not ClassDeclarationSyntax cds)
+                return;
+            if (!cds.Identifier.ValueText.EndsWith("Module", StringComparison.OrdinalIgnoreCase))
+                return;
+            Module
+
+
+        }
+    }*/
 }

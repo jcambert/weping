@@ -50,6 +50,6 @@ public class ClubDto : AuditedEntityDto<Guid>
     #endregion
 
     #region Joueurs
-    public virtual List<JoueurDto> Joueurs { get;  set; } = new();
+    //public virtual List<JoueurDto> Joueurs { get;  set; } = new();
     #endregion
 }

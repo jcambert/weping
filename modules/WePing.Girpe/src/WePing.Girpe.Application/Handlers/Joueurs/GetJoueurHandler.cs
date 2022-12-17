@@ -10,15 +10,14 @@ using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
 using WePing.SmartPing.Domain.Joueurs.Dto;
-using WePing.SmartPing.Spid;
 
 namespace WePing.Girpe.Handlers.Joueurs;
 
 public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
 {
     protected IRepository<Joueur, Guid> Repository => LazyServiceProvider.LazyGetRequiredService<IRepository<Joueur, Guid>>();
-    protected ISpidAppService Spid => LazyServiceProvider.LazyGetRequiredService<ISpidAppService>();
-    protected IMediator Mediator => LazyServiceProvider.LazyGetRequiredService<IMediator>();
+    
+    //protected IGetClubQuery GetClubQuery => LazyServiceProvider.LazyGetRequiredService<IGetClubQuery>();
 
     public GetJoueurHandler(IAbpLazyServiceProvider serviceProvider) : base(serviceProvider)
     {
@@ -29,8 +28,12 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
         // Get the IQueryable<Club> from the repository
         var queryable = await Repository.GetQueryableAsync();
 
-        //Prepare a query to join books and authors
-        var query = from joueur in queryable where joueur.Licence == request.Licence select new { joueur };
+        var mappedRequest = ObjectMapper.Map<GetJoueurQuery, Joueur>(request);
+        queryable = queryable.Filter(mappedRequest);
+
+        ////Prepare a query to join books and authors
+        //var query = from joueur in queryable where joueur.Licence == request.Licence select new { joueur };
+        var query = from joueur in queryable select new { joueur };
 
         //Execute the query and get the book with author
         var queryResult = await AsyncExecuter.FirstOrDefaultAsync(query);
@@ -42,11 +45,17 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
             //Club not exist in database
             //Retrieve it from SPID 
             joueurDto = await GetJoueurFromSpid(request.Licence);
-            var clubDto = await GetClub(joueurDto.NumeroClub);
-            joueurDto.ClubId = clubDto.Id;
             //Joueur didn't exist on SPID
             if (joueurDto == null)
                 throw new EntityNotFoundException(typeof(Joueur), request.Licence);
+            if (request.RetrieveClub)
+            {
+                var clubQuery=ObjectMapper.Map<JoueurDto, GetClubQuery>(joueurDto);
+                //var clubQuery = GetClubQuery;
+                //clubQuery.Numero = joueurDto.NumeroClub;
+                var resp = await Mediator.Send(clubQuery);
+                joueurDto.ClubId = resp.Club.Id;
+            }
 
             //while joueur didn't exist in DB, insert it!
             var result = await Repository.InsertAsync(ObjectMapper.Map<JoueurDto, Joueur>(joueurDto));
@@ -57,7 +66,7 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
         else
             joueurDto = ObjectMapper.Map<Joueur, JoueurDto>(queryResult.joueur);
 
-        return new GetJoueurResponse(joueurDto) {FromDatabase=from_db };
+        return new GetJoueurResponse(joueurDto) { FromDatabase = from_db };
     }
 
     protected async Task<JoueurDto> GetJoueurFromSpid(string licence)

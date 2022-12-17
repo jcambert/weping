@@ -42,6 +42,7 @@ public class BrowseJoueurHandler : BaseHandler<BrowseJoueurQuery, BrowseJoueurRe
             joueursDto = await GetJoueursClassementFromSpid(request.ClubNumero);
             if (joueursDto.Count > 0)
             {
+                
                 //while club didn't exist in DB, insert it!
                 var joueurs = ObjectMapper.Map<List<JoueurDto>, List<Joueur>>(joueursDto);
                 await Repository.InsertManyAsync(joueurs);

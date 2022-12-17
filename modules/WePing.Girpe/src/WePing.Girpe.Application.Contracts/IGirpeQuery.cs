@@ -13,4 +13,5 @@ public interface IGirpeQuery<TResponse>:IBaseGirpeQuery, IRequest<TResponse>
 public abstract record GirpeResponse 
 {
     public bool FromDatabase { get; set;}
+    //public bool EntityExist { get; set; } = true;
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities;
-using WePing.Girpe.Domain;
+using WeUtilities;
 
 namespace WePing.Girpe.Joueurs;
 
+[Queryable]
 public class Joueur : Entity<Guid>
 {
     protected Joueur()
@@ -13,7 +14,7 @@ public class Joueur : Entity<Guid>
 
 
     public Guid ClubId { get; set; }
-    public Club Club { get; set; }=new Club();
+    //public Club Club { get; set; }=new Club();
     public string Licence { get; set; }
     public string Nom { get; set; }
     public string Prenom { get; set; }
