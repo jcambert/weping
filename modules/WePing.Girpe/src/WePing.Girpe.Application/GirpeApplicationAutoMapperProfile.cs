@@ -78,6 +78,8 @@ public class GirpeApplicationAutoMapperProfile : Profile
         CreateMap<Joueur, JoueurDto>()
             //.ForMember(x => x.NumeroClub, opt => opt.MapFrom(x => x.Club.Numero ?? string.Empty))
             //.ForMember(x => x.NomClub, opt => opt.MapFrom(x => x.Club.Nom ?? string.Empty))
+            //.Ignore(x=>x.NomClub)
+            //.Ignore(x => x.NumeroClub)
             ;
 
         CreateMap<JoueurDto, Joueur>()
@@ -135,7 +137,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
             })
             ;
 
-        CreateMap<IUpdateClubForJoueurQuery, IGetJoueurQuery>()
+        CreateMap<UpdateClubForJoueurQuery, GetJoueurQuery>()
             .Ignore(x => x.RetrieveClub)
             ;
     }

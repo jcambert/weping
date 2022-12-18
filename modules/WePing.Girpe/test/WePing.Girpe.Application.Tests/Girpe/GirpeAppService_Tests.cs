@@ -12,7 +12,7 @@ using Xunit;
 
 namespace WePing.Girpe.Girpe;
 
-public class GirpeAppService_Tests: GirpeApplicationTestBase
+public class GirpeAppService_Tests : GirpeApplicationTestBase
 {
     private readonly IJoueurAppService _joueurService;
     private readonly IClubAppService _clubService;
@@ -23,23 +23,73 @@ public class GirpeAppService_Tests: GirpeApplicationTestBase
         _clubService = GetRequiredService<IClubAppService>();
     }
 
+    
+
     [Theory]
-    [InlineData("905821")]
+    [InlineData("905821", "false")]
+    [InlineData("905821", "true")]
     public async Task GetJoueurForLicence(params string[] args)
     {
+        bool retrieveClub = bool.Parse(args[1]);
+
         var query = GetRequiredService<IGetJoueurQuery>();
         Assert.NotNull(query);
         query.Licence = args[0];
+        query.RetrieveClub = retrieveClub;
 
-        var joueur_response=await _joueurService.GetByLicence(query);
-        Assert.NotNull(joueur_response.Joueur);
-        Assert.True(joueur_response.Joueur.Licence == args[0]);
-        Assert.False(joueur_response.FromDatabase);
+        for (int i = 1; i < 3; i++)
+        {
 
-        var joueur1_response=await _joueurService.GetByLicence(query);
-        Assert.NotNull(joueur1_response.Joueur);
-        Assert.True(joueur1_response.Joueur.Licence == args[0]);
-        Assert.True(joueur1_response.FromDatabase);
+            var joueur_response = await _joueurService.GetByLicence(query);
+            Assert.NotNull(joueur_response.Joueur);
+            Assert.True(joueur_response.Joueur.Licence == query.Licence);
+
+
+            GetClubResponse club_response=new (new());
+
+
+            if (retrieveClub)
+            {
+
+                var queryClub = GetRequiredService<IGetClubQuery>();
+                queryClub.Id = joueur_response.Joueur.ClubId;
+                club_response = await _clubService.GetAsync(queryClub);
+                Assert.NotNull(club_response.Club);
+                Assert.True(queryClub.Id == joueur_response.Joueur.ClubId);
+            }
+            else
+            {
+                Assert.True(joueur_response.Joueur.ClubId == Guid.Empty);
+
+            }
+
+            if (i % 2 == 0)
+            {
+
+                Assert.True(joueur_response.FromDatabase);
+                if (retrieveClub)
+                    Assert.True(club_response.FromDatabase);
+            }
+            else
+            {
+                Assert.False(joueur_response.FromDatabase);
+                if (retrieveClub)
+                    Assert.True(club_response.FromDatabase);
+            }
+        }
+
+
+    }
+
+    [Theory]
+    [InlineData("905821")]
+    public async Task UpdateClubForjoueur(params string[] args)
+    {
+        var query=GetRequiredService<IUpdateClubForJoueurQuery>();
+        query.Licence = args[0];
+        var club_response= await _clubService.UpdateForJoueur(query);
+        Assert.NotNull(club_response.Club);
+        Assert.True(club_response.Club.Id!=Guid.Empty);
     }
 
 
@@ -70,12 +120,12 @@ public class GirpeAppService_Tests: GirpeApplicationTestBase
     {
         var query = GetRequiredService<IBrowseClubQuery>();
         query.Dep = args[0];
-        var res=await _clubService.GetAllAsync(query);
+        var res = await _clubService.GetAllAsync(query);
         Assert.NotNull(res.Clubs);
         Assert.True(res.Clubs.Count > 0);
         Assert.False(res.FromDatabase);
 
-         res = await _clubService.GetAllAsync(query);
+        res = await _clubService.GetAllAsync(query);
         Assert.NotNull(res.Clubs);
         Assert.True(res.Clubs.Count > 0);
         Assert.True(res.FromDatabase);
@@ -83,11 +133,11 @@ public class GirpeAppService_Tests: GirpeApplicationTestBase
 
     [Theory]
     [InlineData("02900041")]
-    public  async Task GetClub(params string[] args)
+    public async Task GetClub(params string[] args)
     {
         var query = GetRequiredService<IGetClubQuery>();
         query.Numero = args[0];
-        var res=await _clubService.GetAsync(query);
+        var res = await _clubService.GetAsync(query);
         Assert.NotNull(res);
         Assert.True(res.Club.Numero == args[0]);
     }

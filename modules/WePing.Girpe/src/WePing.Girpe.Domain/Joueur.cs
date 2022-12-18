@@ -18,8 +18,8 @@ public class Joueur : Entity<Guid>
     public string Licence { get; set; }
     public string Nom { get; set; }
     public string Prenom { get; set; }
-    //public virtual string NumeroClub { get; set; }
-    //public virtual string NomClub { get; set; }
+    public virtual string NumeroClub { get; set; }
+    public virtual string NomClub { get; set; }
     public string Classement { get; set; }
 
     #region @see SmartPing.JoueurDetailSpidCla

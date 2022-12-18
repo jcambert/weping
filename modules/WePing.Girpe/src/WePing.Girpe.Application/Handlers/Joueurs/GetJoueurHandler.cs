@@ -58,7 +58,7 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
             }
 
             //while joueur didn't exist in DB, insert it!
-            var result = await Repository.InsertAsync(ObjectMapper.Map<JoueurDto, Joueur>(joueurDto));
+            var result = await Repository.InsertAsync(ObjectMapper.Map<JoueurDto, Joueur>(joueurDto),true,cancellationToken);
 
 
             joueurDto = ObjectMapper.Map<Joueur, JoueurDto>(result);

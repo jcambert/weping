@@ -36,7 +36,8 @@ internal static class StringBuilderExtensions
 
         if (string.Equals(item.Item1, "string", StringComparison.CurrentCultureIgnoreCase))
             return $"(string.IsNullOrEmpty( {queryName}.{item.Item2})?true:{queryName}.{item.Item2}==x.{item.Item2})";
-
+        if(string.Equals(item.Item1, "guid", StringComparison.CurrentCultureIgnoreCase))
+            return $"(Guid.Empty== {queryName}.{item.Item2}?true:{queryName}.{item.Item2}==x.{item.Item2})";
         return string.Empty;
     }
 }

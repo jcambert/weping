@@ -30,7 +30,7 @@ public class GirpeApplicationModule : AbpModule
         context.Services.AddTransient<IGetClubQuery, GetClubQuery>();
         context.Services.AddTransient<IBrowseJoueurQuery, BrowseJoueurQuery>();
         context.Services.AddTransient<IGetJoueurQuery,GetJoueurQuery>();
-        
+        context.Services.AddTransient<IUpdateClubForJoueurQuery, UpdateClubForJoueurQuery>();
        /* context.Services.AddLogging(logger =>
         {
             logger.ClearProviders();
