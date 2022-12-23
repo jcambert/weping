@@ -29,6 +29,6 @@ public class ClubController : GirpeController/*, IClubAppService*/
     public Task<GetClubResponse> GetAsync([FromQuery] GetClubQuery query)=> Service.GetAsync(query);
 
     [HttpGet("update_for_joueur")]
-    public Task<GetClubResponse> UpdateForJoueur([FromQuery] UpdateClubForJoueurQuery query) => Service.UpdateForJoueur(query);
+    public Task<UpdateClubForJoueurResponse> UpdateForJoueur([FromQuery] UpdateClubForJoueurQuery query) => Service.UpdateForJoueur(query);
 }
 

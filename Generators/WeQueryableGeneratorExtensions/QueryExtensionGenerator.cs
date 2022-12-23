@@ -3,8 +3,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -23,8 +21,8 @@ namespace WeQueryableGeneratorExtensions
         LIKE
 
     }
-    [Generator]
-    public class QueryExtensionGenerator : ISourceGenerator
+   // [Generator]
+    public class QueryExtensionGenerator /*: ISourceGenerator*/
     {
         private const string DEFAULT_NAMESPACE="WeUtilities";
         GeneratorQueryableData numerics = GeneratorQueryableData.NumericDatas;
@@ -57,6 +55,7 @@ using System.Data;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
+using WeUtilities;
 namespace {mainNamespace?? DEFAULT_NAMESPACE}
 {{
 public enum FilterOperator
@@ -78,7 +77,7 @@ public enum FilterOperator
        {Helpers()}
     }}
     
-    internal sealed record PropertyInformation(PropertyInfo PropertyInfo, Type PropertyType, string Name);
+    /*internal sealed record PropertyInformation(PropertyInfo PropertyInfo, Type PropertyType, string Name);
     internal class HelperClass<T>
     {{
         public static PropertyInformation Property<TProp>(Expression<Func<T, TProp>> expression)
@@ -99,7 +98,7 @@ public enum FilterOperator
         }}
 
 
-    }}
+    }}*/
 }}
 
 ";

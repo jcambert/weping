@@ -11,4 +11,6 @@ public interface IJoueurAppService:IApplicationService
     Task<BrowseJoueurResponse> GetForClub(IBrowseJoueurQuery query);
 
     Task<GetJoueurResponse> GetByLicence(IGetJoueurQuery query);
+
+    Task<UpdateJoueurResponse> Update(IUpdateJoueurQuery query);
 }

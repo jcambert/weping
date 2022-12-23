@@ -14,7 +14,6 @@ public class SmartPingApplicationTestModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         base.ConfigureServices(context);
-        //context.Services.AddMediator();
         context.Services.AddMediatR(typeof(SmartPingApplicationModule).GetTypeInfo().Assembly);
     }
 }

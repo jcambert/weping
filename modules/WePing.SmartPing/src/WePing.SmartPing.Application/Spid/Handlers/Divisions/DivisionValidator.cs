@@ -1,13 +1,16 @@
 ﻿
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
+using Volo.Abp.DependencyInjection;
 using WePing.SmartPing.Domain.Divisions.Queries;
 using WePing.SmartPing.Spid.Domain.Divisions.Queries;
 using WePing.SmartPing.Spid.Handlers.Epreuves;
 
 namespace WePing.SmartPing.Spid.Handlers.Divisions;
 
+[Dependency(ServiceLifetime.Transient), ExposeServices(typeof(IPipelineBehavior<BrowseDivisionQuery, BrowseDivisionResponse>))]
 public class DivisionValidator : IPipelineBehavior<BrowseDivisionQuery, BrowseDivisionResponse>
 {
     public IConfiguration Configuration { get; init; }

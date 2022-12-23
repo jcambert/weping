@@ -9,6 +9,8 @@ public interface IBrowseJoueurQuery : IGirpeQuery<BrowseJoueurResponse>
     Guid ClubId { get; set; }
 
     string ClubNumero { get; set; }
+
+    bool ForceLoadClubIfNotSet { get; set; }
 }
 
 public sealed record BrowseJoueurResponse(List<JoueurDto> Joueurs):GirpeResponse;

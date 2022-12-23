@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 namespace WePing.Girpe;
 
@@ -6,3 +6,4 @@ namespace WePing.Girpe;
 public class QueryableAttribute:Attribute
 {
 }
+*/

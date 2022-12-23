@@ -21,30 +21,30 @@ public class WePingEntityFrameworkCoreTestModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        ConfigureInMemorySqlite(context.Services);
-    }
+        var configuration = context.Services.GetConfiguration();
+        var mode = configuration["db_test:mode"];
+        var connstring = configuration[$"db_test:ConnectionStrings:{mode}"];
+        var sqliteConnection = CreateDatabaseAndGetConnection(connstring);
 
-    private void ConfigureInMemorySqlite(IServiceCollection services)
-    {
-        _sqliteConnection = CreateDatabaseAndGetConnection();
-
-        services.Configure<AbpDbContextOptions>(options =>
+        Configure<AbpDbContextOptions>(options =>
         {
-            options.Configure(context =>
+            options.Configure(abpDbContextConfigurationContext =>
             {
-                context.DbContextOptions.UseSqlite(_sqliteConnection);
+                abpDbContextConfigurationContext.DbContextOptions.UseSqlite(sqliteConnection);
             });
         });
     }
+
+ 
 
     public override void OnApplicationShutdown(ApplicationShutdownContext context)
     {
         _sqliteConnection.Dispose();
     }
 
-    private static SqliteConnection CreateDatabaseAndGetConnection()
+    private static SqliteConnection CreateDatabaseAndGetConnection(string connstring = "Data Source=:memory:")
     {
-        var connection = new SqliteConnection("Data Source=:memory:");
+        var connection = new SqliteConnection(connstring);
         connection.Open();
 
         var options = new DbContextOptionsBuilder<WePingDbContext>()

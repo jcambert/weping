@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Volo.Abp.Domain.Entities;
-using WePing.Girpe.Joueurs;
 using WeUtilities;
 
 namespace WePing.Girpe.Domain;

@@ -11,6 +11,7 @@
     <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.Authorization" Version="6.0.1" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeUtilities\WeUtilities.csproj" />
     <ProjectReference Include="..\..\..\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain\WePing.Girpe.Domain.csproj" />

@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
+using Volo.Abp.DependencyInjection;
 using WePing.SmartPing.Domain.Epreuves.Queries;
 using WePing.SmartPing.Spid.Domain.Epreuves.Queries;
 
 namespace WePing.SmartPing.Spid.Handlers.Epreuves;
 
+[Dependency(ServiceLifetime.Transient), ExposeServices(typeof(IPipelineBehavior<BrowseEpreuveQuery, BrowseEpreuveResponse>))]
 public class EpreuveValidator : IPipelineBehavior<BrowseEpreuveQuery, BrowseEpreuveResponse>
 {
     public IConfiguration Configuration { get; init; }

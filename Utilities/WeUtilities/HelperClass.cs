@@ -1,11 +1,10 @@
-﻿using System.Linq.Expressions;
+﻿using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace WeUtilities
 {
-    public static  class ReflectionExtensions
-    {
-    }
+
 
     public sealed record PropertyInformation(PropertyInfo PropertyInfo, Type PropertyType, string Name);
     public class HelperClass<T>
@@ -19,6 +18,9 @@ namespace WeUtilities
                 if (body == null)
                 {
                     {
+#if DEBUG
+                        Debugger.Break();
+#endif
                         throw new ArgumentException("'expression' should be a member expression");
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using WePing.SmartPing.Domain.ClubDetails.Domain;
 using WePing.SmartPing.Domain.ClubDetails.Dto;
 using WePing.SmartPing.Domain.Clubs.Domain;
@@ -11,6 +12,8 @@ using WePing.SmartPing.Domain.Joueurs.Domain;
 using WePing.SmartPing.Domain.Joueurs.Dto;
 using WePing.SmartPing.Domain.Organismes.Domain;
 using WePing.SmartPing.Domain.Organismes.Dto;
+using WePing.SmartPing.Domain.Parties.Domain;
+using WePing.SmartPing.Domain.Parties.Dto;
 
 namespace WePing.SmartPing;
 
@@ -21,15 +24,16 @@ public class SmartPingApplicationAutoMapperProfile : Profile
         /* You can configure your AutoMapper mapping configuration here.
          * Alternatively, you can split your mapping configurations
          * into multiple profile classes for a better organization. */
-        this.CreateMap<Club, ClubDto>();
-        this.CreateMap<ClubDetail, ClubDetailDto>();
-        this.CreateMap<Organisme, OrganismeDto>();
-        this.CreateMap<Epreuve, EpreuveDto>();
-        this.CreateMap<Division, DivisionDto>();
-        this.CreateMap<JoueurClassement, JoueurClassementDto>();
-        this.CreateMap<JoueurDetailClassement, JoueurDetailClassementDto>();
-        this.CreateMap<JoueurDetailSpid, JoueurDetailSpidDto>();
-        this.CreateMap<JoueurDetailSpidCla, JoueurDetailSpidClaDto>();
-        this.CreateMap<JoueurSpid, JoueurSpidDto>();
+        CreateMap<Club, ClubDto>();
+        CreateMap<ClubDetail, ClubDetailDto>();
+        CreateMap<Organisme, OrganismeDto>();
+        CreateMap<Epreuve, EpreuveDto>();
+        CreateMap<Division, DivisionDto>();
+        CreateMap<JoueurClassement, JoueurClassementDto>();
+        CreateMap<JoueurDetailClassement, JoueurDetailClassementDto>();
+        CreateMap<JoueurDetailSpid, JoueurDetailSpidDto>();
+        CreateMap<JoueurDetailSpidCla, JoueurDetailSpidClaDto>();
+        CreateMap<JoueurSpid, JoueurSpidDto>();
+        CreateMap<PartiesSpid, PartiesSpidDto>();
     }
 }

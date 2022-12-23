@@ -1,7 +1,9 @@
-﻿using WePing.SmartPing.Domain.Joueurs.Queries;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.DependencyInjection;
+using WePing.SmartPing.Domain.Joueurs.Queries;
 
 namespace WePing.SmartPing.Spid.Domain.Joueurs.Queries;
-
+[Dependency(ServiceLifetime.Transient), ExposeServices(typeof(IBrowseJoueurClassementQuery))]
 public class BrowseJoueurClassementQuery : IBrowseJoueurClassementQuery
 {
     public string Club { get; set ; }

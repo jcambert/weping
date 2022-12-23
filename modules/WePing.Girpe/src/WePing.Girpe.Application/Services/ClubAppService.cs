@@ -10,7 +10,6 @@ public class ClubAppService :
         IClubAppService
 {
 
-    public ClubAppService(IMediator mediator) : base(mediator) { }
 
     public async Task<GetClubResponse> GetAsync(IGetClubQuery query)
         => await Mediator.Send(query);
@@ -18,6 +17,6 @@ public class ClubAppService :
     public async Task<BrowseClubResponse> GetAllAsync(IBrowseClubQuery query)
         => await Mediator.Send(query);
 
-    public async Task<GetClubResponse> UpdateForJoueur(IUpdateClubForJoueurQuery query)
+    public async Task<UpdateClubForJoueurResponse> UpdateForJoueur(IUpdateClubForJoueurQuery query)
         => await Mediator.Send(query);
 }

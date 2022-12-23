@@ -9,4 +9,4 @@ public interface IGetClubDetailQuery : ISpidRequestQuery<GetClubDetailResponse>
     string Club { get; set; }
 }
 
-public sealed record GetClubDetailResponse(ClubDetail club):Response;
+public sealed record GetClubDetailResponse(ClubDetail Club):Response;

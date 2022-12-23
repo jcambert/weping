@@ -9,16 +9,17 @@ using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
+using WePing.Girpe.Services;
 using WePing.SmartPing.Domain.Joueurs.Dto;
+using WePing.SmartPing.Domain.Joueurs.Queries;
 
 namespace WePing.Girpe.Handlers.Joueurs;
 
 public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
 {
-    protected IRepository<Joueur, Guid> Repository => LazyServiceProvider.LazyGetRequiredService<IRepository<Joueur, Guid>>();
-    
-    //protected IGetClubQuery GetClubQuery => LazyServiceProvider.LazyGetRequiredService<IGetClubQuery>();
-
+    protected IRepository<Joueur, Guid> Repository=> GetRequiredService<IRepository<Joueur, Guid>>();
+    protected UpdateJoueurFromSpidDomainService UpdateJoueurService=>GetRequiredService<UpdateJoueurFromSpidDomainService>();    
+ 
     public GetJoueurHandler(IAbpLazyServiceProvider serviceProvider) : base(serviceProvider)
     {
     }
@@ -31,11 +32,10 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
         var mappedRequest = ObjectMapper.Map<GetJoueurQuery, Joueur>(request);
         queryable = queryable.Filter(mappedRequest);
 
-        ////Prepare a query to join books and authors
-        //var query = from joueur in queryable where joueur.Licence == request.Licence select new { joueur };
-        var query = from joueur in queryable select new { joueur };
+        ////Prepare a query 
+        var query = from joueur in queryable select joueur;
 
-        //Execute the query and get the book with author
+        //Execute the query r
         var queryResult = await AsyncExecuter.FirstOrDefaultAsync(query);
         JoueurDto joueurDto;
         bool from_db = queryResult != null;
@@ -46,32 +46,34 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
             //Retrieve it from SPID 
             joueurDto = await GetJoueurFromSpid(request.Licence);
             //Joueur didn't exist on SPID
-            if (joueurDto == null)
+            if (joueurDto == null || string.IsNullOrEmpty(joueurDto.Licence))
                 throw new EntityNotFoundException(typeof(Joueur), request.Licence);
-            if (request.RetrieveClub)
+            if (request.ForceLoadClubIfNotSet)
             {
-                var clubQuery=ObjectMapper.Map<JoueurDto, GetClubQuery>(joueurDto);
-                //var clubQuery = GetClubQuery;
-                //clubQuery.Numero = joueurDto.NumeroClub;
+                var clubQuery = ObjectMapper.Map<JoueurDto, GetClubQuery>(joueurDto);
+                
                 var resp = await Mediator.Send(clubQuery);
                 joueurDto.ClubId = resp.Club.Id;
             }
 
+            await PopulateJoueurDetail(joueurDto,request.DetailOptions,cancellationToken);
             //while joueur didn't exist in DB, insert it!
-            var result = await Repository.InsertAsync(ObjectMapper.Map<JoueurDto, Joueur>(joueurDto),true,cancellationToken);
+            var result = await Repository.InsertAsync(ObjectMapper.Map<JoueurDto, Joueur>(joueurDto), true, cancellationToken);
 
 
             joueurDto = ObjectMapper.Map<Joueur, JoueurDto>(result);
         }
         else
-            joueurDto = ObjectMapper.Map<Joueur, JoueurDto>(queryResult.joueur);
+            joueurDto = ObjectMapper.Map<Joueur, JoueurDto>(queryResult);
 
         return new GetJoueurResponse(joueurDto) { FromDatabase = from_db };
     }
 
+
+
     protected async Task<JoueurDto> GetJoueurFromSpid(string licence)
     {
-        var query = LazyServiceProvider.LazyGetRequiredService<SmartPing.Domain.Joueurs.Queries.IGetJoueurDetailSpidClaQuery>();
+        var query = LazyServiceProvider.LazyGetRequiredService<IGetJoueurDetailSpidClaQuery>();
         query.Licence = licence;
         var joueur = await Spid.GetJoueurDetail(query);
 
@@ -85,4 +87,9 @@ public class GetJoueurHandler : BaseHandler<GetJoueurQuery, GetJoueurResponse>
         var resp = await Mediator.Send(club_query);
         return resp.Club;
     }
+
+    protected async Task PopulateJoueurDetail(JoueurDto joueur,UpdateJoueurFromSpidOption options, CancellationToken cancellationToken)
+    =>await UpdateJoueurService.Update(joueur,options,cancellationToken);
+        
+      
 }

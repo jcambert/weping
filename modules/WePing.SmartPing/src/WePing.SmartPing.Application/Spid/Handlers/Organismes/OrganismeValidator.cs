@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
+using Volo.Abp.DependencyInjection;
 using WePing.SmartPing.Domain.Organismes.Queries;
 using WePing.SmartPing.Spid.Domain.Organismes.Queries;
 
 namespace WePing.SmartPing.Spid.Handlers.Organismes;
-
+[Dependency(ServiceLifetime.Transient), ExposeServices(typeof(IPipelineBehavior<BrowseOrganismeQuery, BrowseOrganismeResponse>))]
 public class OrganismeValidator : IPipelineBehavior<BrowseOrganismeQuery, BrowseOrganismeResponse>
 {
 

@@ -11,6 +11,6 @@ public interface IClubAppService :IApplicationService
 
     Task<GetClubResponse> GetAsync(IGetClubQuery query);
 
-    Task<GetClubResponse> UpdateForJoueur(IUpdateClubForJoueurQuery query) ;
+    Task<UpdateClubForJoueurResponse> UpdateForJoueur(IUpdateClubForJoueurQuery query) ;
 
 }

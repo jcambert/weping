@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using Volo.Abp.DependencyInjection;
@@ -7,7 +6,6 @@ using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
 using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Domain;
-using WePing.SmartPing.Spid;
 using GIRPE_DTO = WePing.Girpe.Clubs.Dto;
 using SP_CLUB_DTO = WePing.SmartPing.Domain.Clubs.Dto;
 using SP_DETAIL_DTO = WePing.SmartPing.Domain.ClubDetails.Dto;
@@ -25,7 +23,7 @@ public class GetClubHandler : BaseHandler<GetClubQuery, GetClubResponse>
     }
 
     protected IRepository<Club, Guid> Repository => LazyServiceProvider.LazyGetRequiredService<IRepository<Club, Guid>>();
-    protected ISpidAppService Spid=>LazyServiceProvider.LazyGetRequiredService<ISpidAppService>();  
+    //protected ISpidAppService Spid=>LazyServiceProvider.LazyGetRequiredService<ISpidAppService>();  
     public override async Task<GetClubResponse> Handle(GetClubQuery request, CancellationToken cancellationToken)
     {
         //Get the IQueryable<Club> from the repository
@@ -49,7 +47,7 @@ public class GetClubHandler : BaseHandler<GetClubQuery, GetClubResponse>
             if (clubDto == null)
                 //Club didn't exist on SPID
                 throw new EntityNotFoundException(typeof(Club), request.Numero);
-            clubDto = await GetClubDetailFromSpid(clubDto);
+            await GetClubDetailFromSpid(clubDto);
             //while club didn't exist in DB, insert it!
             var result = await Repository.InsertAsync(ObjectMapper.Map<GIRPE_DTO.ClubDto, Club>(clubDto));
        
@@ -69,14 +67,13 @@ public class GetClubHandler : BaseHandler<GetClubQuery, GetClubResponse>
         var clubDto = ObjectMapper.Map<SP_CLUB_DTO.ClubDto, GIRPE_DTO.ClubDto>(club);
         return clubDto;
     }
-    protected async Task<GIRPE_DTO.ClubDto> GetClubDetailFromSpid(GIRPE_DTO.ClubDto dto)
+    protected async Task GetClubDetailFromSpid(GIRPE_DTO.ClubDto dto)
     {
         var query = LazyServiceProvider.LazyGetRequiredService<SmartPing.Domain.ClubDetails.Queries.IGetClubDetailQuery>();
         query.Club = dto.Numero;
         var club = await Spid.GetClubDetail(query);
 
-        var clubDto = ObjectMapper.Map<SP_DETAIL_DTO.ClubDetailDto, GIRPE_DTO.ClubDto>(club, dto);
+        ObjectMapper.Map<SP_DETAIL_DTO.ClubDetailDto, GIRPE_DTO.ClubDto>(club, dto);
 
-        return clubDto;
     }
 }

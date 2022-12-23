@@ -1,8 +1,11 @@
-﻿using WePing.SmartPing.Domain.Joueurs.Queries;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.DependencyInjection;
+using WePing.SmartPing.Domain.Joueurs.Queries;
 using WePing.SmartPing.Spid.Domain.Joueurs.Queries;
 
 namespace WePing.SmartPing.Spid.Handlers.Joueurs;
 
+[Dependency(ServiceLifetime.Transient), ExposeServices(typeof(IPipelineBehavior<GetJoueurDetailSpidQuery, GetJoueurDetailSpidResponse>))]
 public class JoueurDetailSpidValidator : IPipelineBehavior<GetJoueurDetailSpidQuery, GetJoueurDetailSpidResponse>
 {
     public JoueurDetailSpidValidator()

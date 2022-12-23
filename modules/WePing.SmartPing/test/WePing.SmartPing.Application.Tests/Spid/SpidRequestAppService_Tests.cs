@@ -7,6 +7,7 @@ using WePing.SmartPing.Domain.Divisions.Queries;
 using WePing.SmartPing.Domain.Epreuves.Queries;
 using WePing.SmartPing.Domain.Joueurs.Queries;
 using WePing.SmartPing.Domain.Organismes.Queries;
+using WePing.SmartPing.Domain.Parties.Queries;
 using WePing.SmartPing.Spid.Handlers.Joueurs;
 using Xunit;
 
@@ -318,6 +319,19 @@ public class SpidRequestAppService_Tests : SmartPingApplicationTestBase
         Task act() => _appService.GetJoueursSpid(query);
         await Assert.ThrowsAsync<ArgumentException>(act);
 
+    }
+
+    [Theory]
+    [InlineData("905821")]
+    public async Task BrowsePartiesSpid(params string[]args)
+    {
+        var query = GetRequiredService<IBrowsePartiesSpidQuery>();
+        query.NumLic= args[0];
+
+        var url = await _requestService.GetQueryAsync(query, "joueur_partie_spid");
+
+        var parties=await _appService.BrowseJoueurParties(query);
+        Assert.NotNull(parties);
     }
 
 }

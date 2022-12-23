@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using Volo.Abp;
 
 namespace WePing.SmartPing.Spid;

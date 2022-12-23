@@ -85,7 +85,7 @@ internal static class SmartPingApplicationModuleExtension
 {
     internal static IServiceCollection RegisterQueries(this IServiceCollection services)
     {
-        
+        /*
         services.AddTransient<IBrowseClubsQuery, BrowseClubsQuery>();
         services.AddTransient<IGetClubQuery, GetClubQuery>();
         services.AddTransient<IGetClubDetailQuery, GetClubDetailQuery>();
@@ -98,19 +98,20 @@ internal static class SmartPingApplicationModuleExtension
         services.AddTransient<IGetJoueurDetailSpidClaQuery, GetJoueurDetailSpidClaQuery>();
         services.AddTransient<IBrowseJoueurDetailSpidClaQuery, BrowseJoueurDetailSpidClaQuery>();
         services.AddTransient<IBrowseJoueurSpidQuery, BrowseJoueurSpidQuery>();
-        services.AddTransient<IGetQuery, GetQuery>();
+        services.AddTransient<IGetQuery, GetQuery>();*/
         return services;
     }
 
     internal static IServiceCollection RegisterValidators(this IServiceCollection services)
     {
+        /*
         services.AddSingleton<IPipelineBehavior<BrowseOrganismeQuery, BrowseOrganismeResponse>, OrganismeValidator>();
         services.AddSingleton<IPipelineBehavior<BrowseEpreuveQuery, BrowseEpreuveResponse>, EpreuveValidator>();
         services.AddSingleton<IPipelineBehavior<BrowseDivisionQuery, BrowseDivisionResponse>, DivisionValidator>();
         services.AddSingleton<IPipelineBehavior<BrowseJoueurClassementQuery, BrowseJoueurClassementResponse>, JoueurClassementValidator>();
         services.AddSingleton<IPipelineBehavior<GetJoueurDetailClassementQuery, GetJoueurDetailClassementResponse>, JoueurDetailClassementValidator>();
         services.AddSingleton<IPipelineBehavior<GetJoueurDetailSpidQuery, GetJoueurDetailSpidResponse>, JoueurDetailSpidValidator>();
-        services.AddSingleton<IPipelineBehavior<BrowseJoueurSpidQuery, BrowseJoueurSpidResponse>, JoueurSpidValidator>();
+        services.AddSingleton<IPipelineBehavior<BrowseJoueurSpidQuery, BrowseJoueurSpidResponse>, JoueurSpidValidator>();*/
         return services;
     }
 }

@@ -27,5 +27,7 @@ public abstract class BaseHandler<TQuery, TResponse> : IRequestHandler<TQuery, T
     protected ISpidAppService Spid => LazyServiceProvider.LazyGetRequiredService<ISpidAppService>();
     protected IMediator Mediator => LazyServiceProvider.LazyGetRequiredService<IMediator>();
 
+    protected T GetRequiredService<T>()=>LazyServiceProvider.LazyGetRequiredService<T>();
+
     public abstract Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken);
 }
