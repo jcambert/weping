@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "WePing.PointCalculator.Domain.Shared": {
+      "path": "src/WePing.PointCalculator.Domain.Shared/WePing.PointCalculator.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Domain": {
+      "path": "src/WePing.PointCalculator.Domain/WePing.PointCalculator.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Application.Contracts": {
+      "path": "src/WePing.PointCalculator.Application.Contracts/WePing.PointCalculator.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Application": {
+      "path": "src/WePing.PointCalculator.Application/WePing.PointCalculator.Application.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.EntityFrameworkCore": {
+      "path": "src/WePing.PointCalculator.EntityFrameworkCore/WePing.PointCalculator.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.MongoDB": {
+      "path": "src/WePing.PointCalculator.MongoDB/WePing.PointCalculator.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.HttpApi": {
+      "path": "src/WePing.PointCalculator.HttpApi/WePing.PointCalculator.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.HttpApi.Client": {
+      "path": "src/WePing.PointCalculator.HttpApi.Client/WePing.PointCalculator.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.TestBase": {
+      "path": "test/WePing.PointCalculator.TestBase/WePing.PointCalculator.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.EntityFrameworkCore.Tests": {
+      "path": "test/WePing.PointCalculator.EntityFrameworkCore.Tests/WePing.PointCalculator.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.MongoDB.Tests": {
+      "path": "test/WePing.PointCalculator.MongoDB.Tests/WePing.PointCalculator.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.Domain.Tests": {
+      "path": "test/WePing.PointCalculator.Domain.Tests/WePing.PointCalculator.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.Application.Tests": {
+      "path": "test/WePing.PointCalculator.Application.Tests/WePing.PointCalculator.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.HttpApi.Host": {
+      "path": "host/WePing.PointCalculator.HttpApi.Host/WePing.PointCalculator.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.Web": {
+      "path": "src/WePing.PointCalculator.Web/WePing.PointCalculator.Web.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/WePing.PointCalculator.HttpApi.Client.ConsoleTestApp/WePing.PointCalculator.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "WePing.PointCalculator.Web.Host": {
+      "path": "host/WePing.PointCalculator.Web.Host/WePing.PointCalculator.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.AuthServer": {
+      "path": "host/WePing.PointCalculator.AuthServer/WePing.PointCalculator.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.Host.Shared": {
+      "path": "host/WePing.PointCalculator.Host.Shared/WePing.PointCalculator.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.Web.Unified": {
+      "path": "host/WePing.PointCalculator.Web.Unified/WePing.PointCalculator.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.Blazor": {
+      "path": "src/WePing.PointCalculator.Blazor/WePing.PointCalculator.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Blazor.Host": {
+      "path": "host/WePing.PointCalculator.Blazor.Host/WePing.PointCalculator.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "WePing.PointCalculator.Blazor.Server": {
+      "path": "src/WePing.PointCalculator.Blazor.Server/WePing.PointCalculator.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Blazor.WebAssembly": {
+      "path": "src/WePing.PointCalculator.Blazor.WebAssembly/WePing.PointCalculator.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "WePing.PointCalculator.Blazor.Server.Host": {
+      "path": "host/WePing.PointCalculator.Blazor.Server.Host/WePing.PointCalculator.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

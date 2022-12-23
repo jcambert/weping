@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WePing.Domain.Shared\WePing.Domain.Shared.csproj" />
-  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Application.Contracts\WePing.Girpe.Application.Contracts.csproj" /></ItemGroup>
+  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Application.Contracts\WePing.SmartPing.Application.Contracts.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Application.Contracts\WePing.Girpe.Application.Contracts.csproj" /><ProjectReference Include="..\..\modules\WePing.PointCalculator\src\WePing.PointCalculator.Application.Contracts\WePing.PointCalculator.Application.Contracts.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.ObjectExtending" Version="6.0.1" />

@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using System.Reflection;
 using System;
+using WePing.PointCalculator;
 
 namespace WePing;
 
@@ -27,6 +28,7 @@ namespace WePing;
     )]
     [DependsOn(typeof(SmartPingApplicationModule))]
     [DependsOn(typeof(GirpeApplicationModule))]
+    [DependsOn(typeof(PointCalculatorApplicationModule))]
     public class WePingApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

@@ -51,6 +51,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using WePing.SmartPing.Blazor.Server;
 using WePing.Girpe.Blazor.Server;
+using WePing.PointCalculator.Blazor.Server;
 
 namespace WePing.Blazor;
 
@@ -72,6 +73,7 @@ namespace WePing.Blazor;
    )]
     [DependsOn(typeof(SmartPingBlazorServerModule))]
     [DependsOn(typeof(GirpeBlazorServerModule))]
+    [DependsOn(typeof(PointCalculatorBlazorServerModule))]
     public class WePingBlazorModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

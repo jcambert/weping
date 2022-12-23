@@ -14,6 +14,7 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using WePing.SmartPing.EntityFrameworkCore;
 using WePing.Girpe.EntityFrameworkCore;
+using WePing.PointCalculator.EntityFrameworkCore;
 
 namespace WePing.EntityFrameworkCore;
 
@@ -85,5 +86,6 @@ public class WePingDbContext :
         //});
             builder.ConfigureSmartPing();
             builder.ConfigureGirpe();
+            builder.ConfigurePointCalculator();
         }
 }

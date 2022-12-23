@@ -17,7 +17,7 @@
     <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="6.0.1" />
-    <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Domain.Shared\WePing.SmartPing.Domain.Shared.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" /></ItemGroup>
+    <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Domain.Shared\WePing.SmartPing.Domain.Shared.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" /><ProjectReference Include="..\..\modules\WePing.PointCalculator\src\WePing.PointCalculator.Domain.Shared\WePing.PointCalculator.Domain.Shared.csproj" /></ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\WePing\*.json" />

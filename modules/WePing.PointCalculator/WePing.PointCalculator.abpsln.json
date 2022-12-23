@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "WePing.PointCalculator": {
+      "path": "WePing.PointCalculator.abpmdl.json"
+    }
+  }
+}

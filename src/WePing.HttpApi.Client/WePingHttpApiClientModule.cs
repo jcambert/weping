@@ -9,6 +9,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
 using WePing.SmartPing;
 using WePing.Girpe;
+using WePing.PointCalculator;
 
 namespace WePing;
 
@@ -23,6 +24,7 @@ namespace WePing;
 )]
     [DependsOn(typeof(SmartPingHttpApiClientModule))]
     [DependsOn(typeof(GirpeHttpApiClientModule))]
+    [DependsOn(typeof(PointCalculatorHttpApiClientModule))]
     public class WePingHttpApiClientModule : AbpModule
 {
     public const string RemoteServiceName = "Default";

@@ -5,6 +5,40 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.Domain", "src\WePing.Domain\WePing.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.TestBase", "modules\WePing.PointCalculator\test\WePing.PointCalculator.TestBase\WePing.PointCalculator.TestBase.csproj", "{5fcc4737-ba09-4f53-b816-c4d4f03b8e19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.HttpApi.Client.ConsoleTestApp", "modules\WePing.PointCalculator\test\WePing.PointCalculator.HttpApi.Client.ConsoleTestApp\WePing.PointCalculator.HttpApi.Client.ConsoleTestApp.csproj", "{946487e2-bbc2-4457-be8e-8c783a42a44a}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.EntityFrameworkCore.Tests", "modules\WePing.PointCalculator\test\WePing.PointCalculator.EntityFrameworkCore.Tests\WePing.PointCalculator.EntityFrameworkCore.Tests.csproj", "{2d669b4f-7f40-4d9d-bb6a-b4820262047f}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Domain.Tests", "modules\WePing.PointCalculator\test\WePing.PointCalculator.Domain.Tests\WePing.PointCalculator.Domain.Tests.csproj", "{8519602d-a20a-4062-9e46-c9f088249e86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Application.Tests", "modules\WePing.PointCalculator\test\WePing.PointCalculator.Application.Tests\WePing.PointCalculator.Application.Tests.csproj", "{e8b09d97-6fbc-4ed9-a408-154eed61bf78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Installer", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Installer\WePing.PointCalculator.Installer.csproj", "{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.HttpApi.Client", "modules\WePing.PointCalculator\src\WePing.PointCalculator.HttpApi.Client\WePing.PointCalculator.HttpApi.Client.csproj", "{14be3436-ddf0-4eda-9bc5-c9834b69bc72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.HttpApi", "modules\WePing.PointCalculator\src\WePing.PointCalculator.HttpApi\WePing.PointCalculator.HttpApi.csproj", "{15dc48c6-0910-466d-bb04-9c8eefc6586b}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.EntityFrameworkCore", "modules\WePing.PointCalculator\src\WePing.PointCalculator.EntityFrameworkCore\WePing.PointCalculator.EntityFrameworkCore.csproj", "{2c9da9fb-abac-4ba3-a81c-3967dc58b356}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Domain.Shared", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Domain.Shared\WePing.PointCalculator.Domain.Shared.csproj", "{43af6b3a-e717-438b-bf91-71b7d70e7f48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Domain", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Domain\WePing.PointCalculator.Domain.csproj", "{f387476e-8464-4b31-b049-f1d027f513e6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Blazor.Server", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Blazor.Server\WePing.PointCalculator.Blazor.Server.csproj", "{deb6c32e-d975-4f16-9001-01aa62a451bd}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Blazor", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Blazor\WePing.PointCalculator.Blazor.csproj", "{a23e0d20-7577-4ef6-bed7-dffbc55dc11b}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Application.Contracts", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Application.Contracts\WePing.PointCalculator.Application.Contracts.csproj", "{4b5c3f6d-0f09-4285-b602-9e6c2a586640}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.PointCalculator.Application", "modules\WePing.PointCalculator\src\WePing.PointCalculator.Application\WePing.PointCalculator.Application.csproj", "{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WePing.PointCalculator.Tests", "WePing.PointCalculator.Tests", "{467faeac-816c-4b63-b371-524a517002a1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WePing.PointCalculator", "WePing.PointCalculator", "{1ab3596a-2883-4307-b607-271ca5a93699}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.Girpe.TestBase", "modules\WePing.Girpe\test\WePing.Girpe.TestBase\WePing.Girpe.TestBase.csproj", "{8BDA986F-B350-4169-B1E2-8045D0DE6BEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WePing.Girpe.HttpApi.Client.ConsoleTestApp", "modules\WePing.Girpe\test\WePing.Girpe.HttpApi.Client.ConsoleTestApp\WePing.Girpe.HttpApi.Client.ConsoleTestApp.csproj", "{2B047EF3-B665-4781-BBA6-92F615B53C02}"
@@ -133,6 +167,66 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5fcc4737-ba09-4f53-b816-c4d4f03b8e19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5fcc4737-ba09-4f53-b816-c4d4f03b8e19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5fcc4737-ba09-4f53-b816-c4d4f03b8e19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5fcc4737-ba09-4f53-b816-c4d4f03b8e19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946487e2-bbc2-4457-be8e-8c783a42a44a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946487e2-bbc2-4457-be8e-8c783a42a44a}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946487e2-bbc2-4457-be8e-8c783a42a44a}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946487e2-bbc2-4457-be8e-8c783a42a44a}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2d669b4f-7f40-4d9d-bb6a-b4820262047f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2d669b4f-7f40-4d9d-bb6a-b4820262047f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2d669b4f-7f40-4d9d-bb6a-b4820262047f}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2d669b4f-7f40-4d9d-bb6a-b4820262047f}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8519602d-a20a-4062-9e46-c9f088249e86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8519602d-a20a-4062-9e46-c9f088249e86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8519602d-a20a-4062-9e46-c9f088249e86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8519602d-a20a-4062-9e46-c9f088249e86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{e8b09d97-6fbc-4ed9-a408-154eed61bf78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{e8b09d97-6fbc-4ed9-a408-154eed61bf78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{e8b09d97-6fbc-4ed9-a408-154eed61bf78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{e8b09d97-6fbc-4ed9-a408-154eed61bf78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14be3436-ddf0-4eda-9bc5-c9834b69bc72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14be3436-ddf0-4eda-9bc5-c9834b69bc72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14be3436-ddf0-4eda-9bc5-c9834b69bc72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14be3436-ddf0-4eda-9bc5-c9834b69bc72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15dc48c6-0910-466d-bb04-9c8eefc6586b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15dc48c6-0910-466d-bb04-9c8eefc6586b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15dc48c6-0910-466d-bb04-9c8eefc6586b}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15dc48c6-0910-466d-bb04-9c8eefc6586b}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2c9da9fb-abac-4ba3-a81c-3967dc58b356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2c9da9fb-abac-4ba3-a81c-3967dc58b356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2c9da9fb-abac-4ba3-a81c-3967dc58b356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2c9da9fb-abac-4ba3-a81c-3967dc58b356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43af6b3a-e717-438b-bf91-71b7d70e7f48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43af6b3a-e717-438b-bf91-71b7d70e7f48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43af6b3a-e717-438b-bf91-71b7d70e7f48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43af6b3a-e717-438b-bf91-71b7d70e7f48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{f387476e-8464-4b31-b049-f1d027f513e6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f387476e-8464-4b31-b049-f1d027f513e6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f387476e-8464-4b31-b049-f1d027f513e6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{f387476e-8464-4b31-b049-f1d027f513e6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{deb6c32e-d975-4f16-9001-01aa62a451bd}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{deb6c32e-d975-4f16-9001-01aa62a451bd}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{deb6c32e-d975-4f16-9001-01aa62a451bd}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{deb6c32e-d975-4f16-9001-01aa62a451bd}.Release|Any CPU.Build.0 = Release|Any CPU
+		{a23e0d20-7577-4ef6-bed7-dffbc55dc11b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a23e0d20-7577-4ef6-bed7-dffbc55dc11b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{a23e0d20-7577-4ef6-bed7-dffbc55dc11b}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{a23e0d20-7577-4ef6-bed7-dffbc55dc11b}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4b5c3f6d-0f09-4285-b602-9e6c2a586640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4b5c3f6d-0f09-4285-b602-9e6c2a586640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4b5c3f6d-0f09-4285-b602-9e6c2a586640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4b5c3f6d-0f09-4285-b602-9e6c2a586640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -338,6 +432,23 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{5fcc4737-ba09-4f53-b816-c4d4f03b8e19} = {467faeac-816c-4b63-b371-524a517002a1}
+		{946487e2-bbc2-4457-be8e-8c783a42a44a} = {467faeac-816c-4b63-b371-524a517002a1}
+		{2d669b4f-7f40-4d9d-bb6a-b4820262047f} = {467faeac-816c-4b63-b371-524a517002a1}
+		{8519602d-a20a-4062-9e46-c9f088249e86} = {467faeac-816c-4b63-b371-524a517002a1}
+		{e8b09d97-6fbc-4ed9-a408-154eed61bf78} = {467faeac-816c-4b63-b371-524a517002a1}
+		{644e2eb8-5f3e-4dd3-bfae-c5d8e977b129} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{14be3436-ddf0-4eda-9bc5-c9834b69bc72} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{15dc48c6-0910-466d-bb04-9c8eefc6586b} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{2c9da9fb-abac-4ba3-a81c-3967dc58b356} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{43af6b3a-e717-438b-bf91-71b7d70e7f48} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{f387476e-8464-4b31-b049-f1d027f513e6} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{deb6c32e-d975-4f16-9001-01aa62a451bd} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{a23e0d20-7577-4ef6-bed7-dffbc55dc11b} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{4b5c3f6d-0f09-4285-b602-9e6c2a586640} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{613cba3f-ccbe-46ad-ac2d-7dc47caec2d0} = {1ab3596a-2883-4307-b607-271ca5a93699}
+		{467faeac-816c-4b63-b371-524a517002a1} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
+		{1ab3596a-2883-4307-b607-271ca5a93699} = {D0711C3B-ED6E-4D53-B729-36DA328EB25F}
 		{554AD327-6DBA-4F8F-96F8-81CE7A0C863F} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{8BDA986F-B350-4169-B1E2-8045D0DE6BEF} = {F74BA94B-1106-411D-8AEE-C2C18065D0B5}
 		{2B047EF3-B665-4781-BBA6-92F615B53C02} = {F74BA94B-1106-411D-8AEE-C2C18065D0B5}

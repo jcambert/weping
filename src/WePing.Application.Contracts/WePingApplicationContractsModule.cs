@@ -8,6 +8,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using WePing.SmartPing;
 using WePing.Girpe;
+using WePing.PointCalculator;
 namespace WePing;
 
 [DependsOn(
@@ -22,6 +23,7 @@ namespace WePing;
 )]
     [DependsOn(typeof(SmartPingApplicationContractsModule))]
     [DependsOn(typeof(GirpeApplicationContractsModule))]
+    [DependsOn(typeof(PointCalculatorApplicationContractsModule))]
     public class WePingApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WePing.Application.Contracts\WePing.Application.Contracts.csproj" />
-  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.HttpApi\WePing.SmartPing.HttpApi.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.HttpApi\WePing.Girpe.HttpApi.csproj" /></ItemGroup>
+  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.HttpApi\WePing.SmartPing.HttpApi.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.HttpApi\WePing.Girpe.HttpApi.csproj" /><ProjectReference Include="..\..\modules\WePing.PointCalculator\src\WePing.PointCalculator.HttpApi\WePing.PointCalculator.HttpApi.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.HttpApi" Version="6.0.1" />

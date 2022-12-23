@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -11,7 +11,7 @@
     <ProjectReference Include="..\..\Utilities\WeAutoMapper\WeAutoMapper.csproj" />
     <ProjectReference Include="..\WePing.Domain\WePing.Domain.csproj" />
     <ProjectReference Include="..\WePing.Application.Contracts\WePing.Application.Contracts.csproj" />
-  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Application\WePing.SmartPing.Application.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Application\WePing.Girpe.Application.csproj" /></ItemGroup>
+  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Application\WePing.SmartPing.Application.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Application\WePing.Girpe.Application.csproj" /><ProjectReference Include="..\..\modules\WePing.PointCalculator\src\WePing.PointCalculator.Application\WePing.PointCalculator.Application.csproj" /></ItemGroup>
 
   <ItemGroup>
     

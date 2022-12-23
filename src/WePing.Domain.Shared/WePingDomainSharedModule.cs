@@ -14,6 +14,7 @@ using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 using WePing.SmartPing;
 using WePing.Girpe;
+using WePing.PointCalculator;
 
 namespace WePing;
 
@@ -29,6 +30,7 @@ namespace WePing;
     )]
     [DependsOn(typeof(SmartPingDomainSharedModule))]
     [DependsOn(typeof(GirpeDomainSharedModule))]
+    [DependsOn(typeof(PointCalculatorDomainSharedModule))]
     public class WePingDomainSharedModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

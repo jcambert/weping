@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WePing.Domain.Shared\WePing.Domain.Shared.csproj" />
-  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Domain\WePing.SmartPing.Domain.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Domain\WePing.Girpe.Domain.csproj" /></ItemGroup>
+  <ProjectReference Include="..\..\modules\WePing.SmartPing\src\WePing.SmartPing.Domain\WePing.SmartPing.Domain.csproj" /><ProjectReference Include="..\..\modules\WePing.Girpe\src\WePing.Girpe.Domain\WePing.Girpe.Domain.csproj" /><ProjectReference Include="..\..\modules\WePing.PointCalculator\src\WePing.PointCalculator.Domain\WePing.PointCalculator.Domain.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Emailing" Version="6.0.1" />

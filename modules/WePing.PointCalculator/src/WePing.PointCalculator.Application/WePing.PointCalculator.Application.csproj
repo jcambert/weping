@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>WePing.PointCalculator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.1" />
+    <ProjectReference Include="..\WePing.PointCalculator.Application.Contracts\WePing.PointCalculator.Application.Contracts.csproj" />
+    <ProjectReference Include="..\WePing.PointCalculator.Domain\WePing.PointCalculator.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -9,9 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" Version="6.0.1" />
-    <ProjectReference Include="..\..\..\..\Generators\WeQueryableGeneratorExtensions\WeQueryableGeneratorExtensions.csproj" 
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\..\Generators\WeQueryableGeneratorExtensions\WeQueryableGeneratorExtensions.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\..\..\..\Utilities\WeUtilities\WeUtilities.csproj" />
     <ProjectReference Include="..\WePing.Girpe.Domain.Shared\WePing.Girpe.Domain.Shared.csproj" />
     

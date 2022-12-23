@@ -14,6 +14,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using WePing.SmartPing.EntityFrameworkCore;
 using WePing.Girpe.EntityFrameworkCore;
+using WePing.PointCalculator.EntityFrameworkCore;
 
 namespace WePing.EntityFrameworkCore;
 
@@ -31,6 +32,7 @@ namespace WePing.EntityFrameworkCore;
     )]
     [DependsOn(typeof(SmartPingEntityFrameworkCoreModule))]
     [DependsOn(typeof(GirpeEntityFrameworkCoreModule))]
+    [DependsOn(typeof(PointCalculatorEntityFrameworkCoreModule))]
     public class WePingEntityFrameworkCoreModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
