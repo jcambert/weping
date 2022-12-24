@@ -14,9 +14,11 @@ public class PointCalculatorEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<PointCalculatorDbContext>(options =>
         {
-                /* Add custom repositories here. Example:
-                 * options.AddRepository<Question, EfCoreQuestionRepository>();
-                 */
+            options.AddDefaultRepositories(includeAllEntities: true);
+            /* Add custom repositories here. Example:
+             * options.AddRepository<Question, EfCoreQuestionRepository>();
+             */
         });
+        
     }
 }

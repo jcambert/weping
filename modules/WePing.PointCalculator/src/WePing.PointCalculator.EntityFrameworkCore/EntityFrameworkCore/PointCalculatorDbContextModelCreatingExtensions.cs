@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace WePing.PointCalculator.EntityFrameworkCore;
 
@@ -9,7 +10,13 @@ public static class PointCalculatorDbContextModelCreatingExtensions
         this ModelBuilder builder)
     {
         Check.NotNull(builder, nameof(builder));
+        Check.NotNull(builder, nameof(builder));
 
+        builder.Entity<Bareme>(b =>
+        {
+            b.ToTable(PointCalculatorDbProperties.DbTablePrefix + "Bareme", PointCalculatorDbProperties.DbSchema);
+            b.ConfigureByConvention();
+        });
         /* Configure all entities here. Example:
 
         builder.Entity<Question>(b =>

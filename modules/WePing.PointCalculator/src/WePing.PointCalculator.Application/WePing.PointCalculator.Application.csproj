@@ -10,6 +10,9 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" Version="6.0.1" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.1" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeAutoMapper\WeAutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeMediatr\WeMediatr.csproj" />
+    <ProjectReference Include="..\..\..\..\Utilities\WeUtilities\WeUtilities.csproj" />
     <ProjectReference Include="..\WePing.PointCalculator.Application.Contracts\WePing.PointCalculator.Application.Contracts.csproj" />
     <ProjectReference Include="..\WePing.PointCalculator.Domain\WePing.PointCalculator.Domain.csproj" />
   </ItemGroup>

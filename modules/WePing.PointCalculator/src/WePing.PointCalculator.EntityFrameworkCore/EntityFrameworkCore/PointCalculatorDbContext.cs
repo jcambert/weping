@@ -10,7 +10,7 @@ public class PointCalculatorDbContext : AbpDbContext<PointCalculatorDbContext>, 
     /* Add DbSet for each Aggregate Root here. Example:
      * public DbSet<Question> Questions { get; set; }
      */
-
+    public DbSet<Bareme> Baremes { get; set; }
     public PointCalculatorDbContext(DbContextOptions<PointCalculatorDbContext> options)
         : base(options)
     {
