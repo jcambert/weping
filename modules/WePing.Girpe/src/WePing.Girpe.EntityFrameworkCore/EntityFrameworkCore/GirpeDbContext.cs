@@ -14,7 +14,7 @@ public class GirpeDbContext : AbpDbContext<GirpeDbContext>, IGirpeDbContext
      */
     public DbSet<Club> Clubs { get; set; }
     public DbSet<Joueur> Joueurs { get; set; }
-
+    public DbSet<PartieSpid> PartiesSpid { get; set; }
     public GirpeDbContext(DbContextOptions<GirpeDbContext> options)
         : base(options)
     {

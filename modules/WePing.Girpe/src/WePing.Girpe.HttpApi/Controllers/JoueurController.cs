@@ -20,7 +20,6 @@ public class JoueurController:GirpeController/*,IJoueurAppService*/
     public IJoueurAppService Service => LazyServiceProvider.LazyGetRequiredService<IJoueurAppService>();
 
     [HttpGet("by_licence")]
-
     public Task<GetJoueurResponse> GetByLicence([FromQuery] GetJoueurQuery query) => Service.GetByLicence(query);
 
     [HttpGet("for_club")]

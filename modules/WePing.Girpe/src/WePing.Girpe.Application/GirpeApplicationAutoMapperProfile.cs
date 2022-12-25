@@ -12,6 +12,7 @@ using WePing.Girpe.Domain;
 using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries.Impl;
+using WePing.Girpe.Parties.Dto;
 using WePing.SmartPing.Domain.Joueurs.Dto;
 using WeUtilities;
 using SP_QUERY = WePing.SmartPing.Domain.Clubs.Queries;
@@ -81,6 +82,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
             //.ForMember(x => x.NomClub, opt => opt.MapFrom(x => x.Club.Nom ?? string.Empty))
             //.Ignore(x=>x.NomClub)
             //.Ignore(x => x.NumeroClub)
+            .ForMember(x=>x.PartiesSpid,opt=>opt.)
             ;
 
         CreateMap<JoueurDto, Joueur>()
@@ -244,61 +246,10 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .For(x=>x.Licence,y=>y.Licence)
             .EndOnlyFor()
             ;
+
+        CreateMap<JoueurPartiesSpidDto, PartieSpid>();
+
+
+        CreateMap< PartieSpid, JoueurPartiesSpidDto>();
     }
-}/*
-internal static class AutoMapperExtension
-{
-
-    internal static void OnlyFor<TSource, TDestination>(this IMappingExpression<TSource, TDestination> mapper
-        , List<MapMember> members)
-    {
-        List<string> source = new List<string>();
-        foreach (var member in members)
-        {
-            mapper.ForMember(member.Destination, x => x.MapFrom(member.Source));
-            source.Add(member.Destination);
-        }
-        var notMapped = typeof(TDestination).GetProperties().Where(p => !source.Contains(p.Name)).ToList();
-        foreach (var member in notMapped)
-        {
-            mapper.ForMember(member.Name, opt => opt.Ignore());
-        }
-    }
-
-    internal static void OnlyFor<TSource, TDestination>(this IMappingExpression<TSource, TDestination> mapper
-        , List<MapMemberExpression<TSource, TDestination>> members)
-    {
-#if DEBUG
-        if (typeof(BrowseJoueurQuery) == typeof(TSource))
-            Debugger.Break();
-#endif
-        List<string> source = new List<string>();
-        foreach (var member in members)
-        {
-            //var propSource = HelperClass<TSource>.Property(member.Source);
-            var propDest = HelperClass<TDestination>.Property(member.Destination);
-            //mapper.ForMember(propDest.Name, x => x.MapFrom(propSource.Name));
-            try
-            {
-                mapper.ForMember(member.Destination, opt => opt.MapFrom(member.Source));
-            }
-            catch (Exception ex)
-            {
-                Debugger.Break();
-            }
-
-            source.Add(propDest.Name);
-        }
-        var notMapped = typeof(TDestination).GetProperties().Where(p => !source.Contains(p.Name)).ToList();
-        foreach (var member in notMapped)
-        {
-            mapper.ForMember(member.Name, opt => opt.Ignore());
-        }
-    }
-
-
 }
-
-internal sealed record MapMember(string Source, string Destination);
-internal sealed record MapMemberExpression<TSource, TDestination>(Expression<Func<TSource, object>> Source, Expression<Func<TDestination, object>> Destination);
-*/

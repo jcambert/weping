@@ -23,24 +23,13 @@ public static class GirpeDbContextModelCreatingExtensions
             b.ToTable(GirpeDbProperties.DbTablePrefix + "Joueur", GirpeDbProperties.DbSchema);
             b.ConfigureByConvention();
         });
-        /* Configure all entities here. Example:
-
-        builder.Entity<Question>(b =>
+        builder.Entity<PartieSpid>(b =>
         {
-            //Configure table & schema name
-            b.ToTable(GirpeDbProperties.DbTablePrefix + "Questions", GirpeDbProperties.DbSchema);
+            b.ToTable(GirpeDbProperties.DbTablePrefix + "PartiesSpid", GirpeDbProperties.DbSchema);
 
             b.ConfigureByConvention();
 
-            //Properties
-            b.Property(q => q.Title).IsRequired().HasMaxLength(QuestionConsts.MaxTitleLength);
-
-            //Relations
-            b.HasMany(question => question.Tags).WithOne().HasForeignKey(qt => qt.QuestionId);
-
-            //Indexes
-            b.HasIndex(q => q.CreationTime);
+            b.HasKey(x => new { x.JoueurId, x.Date,x.NomPrenomAdversaire});
         });
-        */
     }
 }

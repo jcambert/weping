@@ -14,4 +14,5 @@ public interface IGirpeDbContext : IEfCoreDbContext
      */
     DbSet<Club> Clubs { get; set; }
     DbSet<Joueur> Joueurs { get; set; }
+    
 }

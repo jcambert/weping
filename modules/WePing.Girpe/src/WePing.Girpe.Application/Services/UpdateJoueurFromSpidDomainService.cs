@@ -3,6 +3,7 @@ using System.Threading;
 using WePing.Girpe.Joueurs.Dto;
 using WePing.SmartPing.Domain.Joueurs.Dto;
 using WePing.SmartPing.Domain.Joueurs.Queries;
+using WePing.SmartPing.Domain.Parties.Queries;
 
 namespace WePing.Girpe.Services;
 
@@ -12,7 +13,7 @@ public class UpdateJoueurFromSpidDomainService : GirpeDomainService
     IGetJoueurDetailSpidQuery DetailSpidQuery => GetRequiredService<IGetJoueurDetailSpidQuery>();
     IGetJoueurDetailClassementQuery DetailClaQuery => GetRequiredService<IGetJoueurDetailClassementQuery>();
     IGetJoueurDetailSpidClaQuery DetailSpidClaQuery => GetRequiredService<IGetJoueurDetailSpidClaQuery>();
-
+    IBrowsePartiesSpidQuery PartiesSpidQuery=>GetRequiredService<IBrowsePartiesSpidQuery>();
     public async Task Update(JoueurDto joueur, UpdateJoueurFromSpidOption options = UpdateJoueurFromSpidOption.All, CancellationToken cancellationToken=default)
     {
         if (joueur == null || string.IsNullOrEmpty(joueur.Licence))
@@ -51,6 +52,14 @@ public class UpdateJoueurFromSpidDomainService : GirpeDomainService
         if ((options & UpdateJoueurFromSpidOption.Club) == UpdateJoueurFromSpidOption.Club)
         {
             var club = await UpdateClubService.Update(joueur, cancellationToken);
+        }
+
+        if ((options & UpdateJoueurFromSpidOption.PartiesSpid) == UpdateJoueurFromSpidOption.PartiesSpid)
+        {
+            var query = PartiesSpidQuery;
+            query.NumLic= joueur.Licence;
+            var parties_response = await Spid.BrowseJoueurParties(query);
+            joueur.PartiesSpid= parties_response;
         }
     }
 }

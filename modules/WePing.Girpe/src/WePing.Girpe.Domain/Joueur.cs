@@ -1,20 +1,29 @@
 ﻿using System;
-using Volo.Abp.Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
+using Volo.Abp.Domain.Entities.Auditing;
 using WeUtilities;
 
 namespace WePing.Girpe.Joueurs;
 
 [Queryable]
-public class Joueur : Entity<Guid>
+public class Joueur : AuditedAggregateRoot<Guid> //Entity<Guid>
 {
     protected Joueur()
     {
 
     }
-
+    public Joueur(Guid id,string licence,string nom,string prenom)
+    {
+        Id = id;
+        Licence=licence;
+        Nom=nom;
+        Prenom=prenom;
+        PartiesSpid = new ();
+    }
 
     public Guid ClubId { get; set; }
-    //public Club Club { get; set; }=new Club();
+    
     public string Licence { get; set; }
     public string Nom { get; set; }
     public string Prenom { get; set; }
@@ -79,4 +88,20 @@ public class Joueur : Entity<Guid>
     public string PointsOfficiels { get; set; }
     public string PropositionClassement { get; set; }
     public string PointsDebutSaison { get; set; }
+
+    public virtual List<PartieSpid> PartiesSpid{get;protected set;}
+
+    public void AddPartieSpid(string date,string nomPrenomAdv,string classementAdversaire,string epreuve,string victoireOuDefaite,string forfait,double points)
+    {
+        var partie=PartiesSpid.FirstOrDefault(x => x.JoueurId == Id && x.Date == date && x.NomPrenomAdversaire == nomPrenomAdv);
+        if (partie == null)
+        {
+            PartiesSpid.Add(new(Id,date,nomPrenomAdv));
+        }
+        partie.ClassementAdversaire = classementAdversaire;
+        partie.Epreuve = epreuve;
+        partie.VictoireOuDefaite = victoireOuDefaite;
+        partie.Forfait = forfait;
+        partie.PointsAcquisPerdus = points;
+    }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Volo.Abp.Application.Dtos;
+using WePing.SmartPing.Domain.Parties.Dto;
 
 namespace WePing.Girpe.Joueurs.Dto;
 
@@ -78,4 +82,6 @@ public class JoueurDto : EntityDto<Guid>
     public string PointsOfficiels { get; set; }
     public string PropositionClassement { get; set; }
     public string PointsDebutSaison { get; set; }
+
+    public ICollection<PartiesSpidDto> PartiesSpid { get; set; } = new Collection<PartiesSpidDto>();
 }

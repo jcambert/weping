@@ -7,10 +7,11 @@ public enum UpdateJoueurFromSpidOption
 {
     None = 0,
     Spid = 1,
-    Cla = 2,
-    SpidCla = 4,
-    Club=8,
-    DetailsOnly=1+2+4,
-    All = 1 + 2 + 4+8,
+    Cla = 1<<1,
+    SpidCla = 1<<2,
+    Club=1<<3,
+    PartiesSpid=1<<4,
+    DetailsOnly=Spid|Cla|SpidCla,
+    All =  ~0,
 
 }
