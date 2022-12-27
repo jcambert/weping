@@ -11,4 +11,5 @@ public interface IGetJoueurQuery : IGirpeQuery<GetJoueurResponse>
     UpdateJoueurFromSpidOption DetailOptions { get; set; }
 }
 
-public sealed record GetJoueurResponse(JoueurDto Joueur): GirpeResponse;
+public sealed record GetJoueurResponse(Joueur Joueur): GirpeResponse;
+public sealed record GetJoueurResponseDto(JoueurDto Joueur) ;

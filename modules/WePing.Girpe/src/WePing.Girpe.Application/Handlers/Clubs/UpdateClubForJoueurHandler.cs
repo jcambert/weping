@@ -21,19 +21,25 @@ public class UpdateClubForJoueurHandler : BaseHandler<UpdateClubForJoueurQuery, 
 
     public override async Task<UpdateClubForJoueurResponse> Handle(UpdateClubForJoueurQuery request, CancellationToken cancellationToken)
     {
+        //Search Joueur
         var joueurRequest = ObjectMapper.Map<UpdateClubForJoueurQuery, GetJoueurQuery>(request);
         var joueurResp = await Mediator.Send(joueurRequest);
         var joueur = joueurResp.Joueur;
-        var club=await UpdateService.Update(joueur, cancellationToken);
-        var queryable = await Repository.GetQueryableAsync();
+
+
+        //Search Club of Joueur while updating Club Of Joueur
+        var club=await UpdateService.UpdateClub(joueur, cancellationToken);
+
+        /*var queryable = await Repository.GetQueryableAsync();
         var q = from j in queryable where j.Id == joueurResp.Joueur.Id select j;
         var jj = q.FirstOrDefault();
 
-        joueurResp.Joueur.ClubId = club.Id;
+        joueurResp.Joueur.ClubId = club.Id;*/
+        joueur.ClubId= club.Id;
 
-        ObjectMapper.Map<JoueurDto, Joueur>(joueurResp.Joueur, jj);
+        //ObjectMapper.Map<JoueurDto, Joueur>(joueurResp.Joueur, jj);
 
-        await Repository.UpdateAsync(jj, true, cancellationToken);
+        await Repository.UpdateAsync(joueur, true, cancellationToken);
         /*
         var clubQuery = ObjectMapper.Map<JoueurDto, GetClubQuery>(joueurResp.Joueur);
         var clubResp = await Mediator.Send(clubQuery);

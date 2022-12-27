@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.ObjectMapping;
 using WePing.Girpe.Clubs;
 using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Joueurs;
-using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
 using WeUtilities;
 using Xunit;
@@ -17,11 +16,12 @@ public class GirpeAppService_Tests : GirpeApplicationTestBase
 {
     private readonly IJoueurAppService _joueurService;
     private readonly IClubAppService _clubService;
-
+    private readonly IObjectMapper _mapper;
     public GirpeAppService_Tests()
     {
         _joueurService = GetRequiredService<IJoueurAppService>();
         _clubService = GetRequiredService<IClubAppService>();
+        _mapper = GetRequiredService<IObjectMapper>();
     }
 
     
@@ -115,7 +115,7 @@ public class GirpeAppService_Tests : GirpeApplicationTestBase
        // query2.ClubId = response.Club.Id;
         query2.ClubNumero = args[0];
         query2.ForceLoadClubIfNotSet = true;
-        List<JoueurDto> joueurs = (await _joueurService.GetForClub(query2)).Joueurs;
+        var joueurs = (await _joueurService.GetForClub(query2)).Joueurs;
         Assert.NotNull(joueurs);
         Assert.True(joueurs.Count > 0);
 
@@ -145,6 +145,21 @@ public class GirpeAppService_Tests : GirpeApplicationTestBase
         Assert.NotNull(res.Clubs);
         Assert.True(res.Clubs.Count > 0);
         Assert.True(res.FromDatabase);
+    }
+    [Theory]
+    [InlineData("90")]
+    public async Task BrowseAllClubDtoResponseMap(params string[] args)
+    {
+        var query = GetRequiredService<IBrowseClubQuery>();
+        query.Dep = args[0];
+        var res = await _clubService.GetAllAsync(query);
+        Assert.NotNull(res.Clubs);
+        Assert.True(res.Clubs.Count > 0);
+        Assert.False(res.FromDatabase);
+        var res_dto=_mapper.Map<BrowseClubResponse, BrowseClubResponseDto>(res);
+        Assert.True(res.Clubs.First().Numero == res_dto.Clubs.First().Numero);
+
+
     }
 
     [Theory]

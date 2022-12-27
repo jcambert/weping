@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WePing.Girpe.Joueurs.Dto;
 
 namespace WePing.Girpe.Joueurs.Queries;
@@ -13,4 +12,5 @@ public interface IBrowseJoueurQuery : IGirpeQuery<BrowseJoueurResponse>
     bool ForceLoadClubIfNotSet { get; set; }
 }
 
-public sealed record BrowseJoueurResponse(List<JoueurDto> Joueurs):GirpeResponse;
+public sealed record BrowseJoueurResponse(List<Joueur> Joueurs):GirpeResponse;
+public sealed record BrowseJoueurResponseDto(List<JoueurDto> Joueurs) ;

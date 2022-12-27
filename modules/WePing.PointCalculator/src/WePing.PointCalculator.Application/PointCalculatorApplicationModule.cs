@@ -20,5 +20,7 @@ public class PointCalculatorApplicationModule : AbpModule
         {
             options.AddMaps<PointCalculatorApplicationModule>(validate: true);
         });
+
+        
     }
 }

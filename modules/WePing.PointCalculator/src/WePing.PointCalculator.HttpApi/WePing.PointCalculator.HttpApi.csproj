@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.1" />
     <ProjectReference Include="..\WePing.PointCalculator.Application.Contracts\WePing.PointCalculator.Application.Contracts.csproj" />
+    
   </ItemGroup>
 
 </Project>

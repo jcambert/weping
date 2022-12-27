@@ -1,20 +1,15 @@
 ﻿using AutoMapper;
-using AutoMapper.Execution;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using Volo.Abp.AutoMapper;
 using WePing.Girpe.Clubs.Dto;
 using WePing.Girpe.Clubs.Queries;
 using WePing.Girpe.Domain;
 using WePing.Girpe.Joueurs;
 using WePing.Girpe.Joueurs.Dto;
+using WePing.Girpe.Joueurs.Queries;
 using WePing.Girpe.Joueurs.Queries.Impl;
 using WePing.Girpe.Parties.Dto;
 using WePing.SmartPing.Domain.Joueurs.Dto;
-using WeUtilities;
 using SP_QUERY = WePing.SmartPing.Domain.Clubs.Queries;
 namespace WePing.Girpe;
 
@@ -41,7 +36,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
             // .ForMember(x => x.ExtraProperties, opt => opt.Ignore())
             ;
 
-        CreateMap<SmartPing.Domain.Clubs.Dto.ClubDto, ClubDto>()
+        CreateMap<SmartPing.Domain.Clubs.Dto.ClubDto, Club>()
             .ForMember(x => x.Id, opt => opt.Ignore())
             .ForMember(x => x.Identifiant, opt => opt.MapFrom(src => src.Id))
             .ForMember(x => x.NomSalle, opt => opt.Ignore())
@@ -58,17 +53,17 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .ForMember(x => x.Latitude, opt => opt.Ignore())
             .ForMember(x => x.Longitude, opt => opt.Ignore())
             //.ForMember(x => x.Joueurs, opt => opt.Ignore())
-            .IgnoreAuditedObjectProperties()
+            //.IgnoreAuditedObjectProperties()
             ;
 
-        CreateMap<SmartPing.Domain.ClubDetails.Dto.ClubDetailDto, ClubDto>()
+        CreateMap<SmartPing.Domain.ClubDetails.Dto.ClubDetailDto, Club>()
             .ForMember(x => x.Id, opt => opt.Ignore())
             .ForMember(x => x.Numero, opt => opt.Ignore())
             .ForMember(x => x.Identifiant, opt => opt.Ignore())
             .ForMember(x => x.Nom, opt => opt.Ignore())
             .ForMember(x => x.Validation, opt => opt.Ignore())
             //.ForMember(x => x.Joueurs, opt => opt.Ignore())
-            .IgnoreAuditedObjectProperties()
+            //.IgnoreAuditedObjectProperties()
             ;
 
         CreateMap<CreateUpdateClubDto, Club>()
@@ -82,16 +77,19 @@ public class GirpeApplicationAutoMapperProfile : Profile
             //.ForMember(x => x.NomClub, opt => opt.MapFrom(x => x.Club.Nom ?? string.Empty))
             //.Ignore(x=>x.NomClub)
             //.Ignore(x => x.NumeroClub)
-            .ForMember(x=>x.PartiesSpid,opt=>opt.)
+            .Ignore(x=>x.PartiesSpid)
             ;
 
         CreateMap<JoueurDto, Joueur>()
+            .Ignore(x=>x.ExtraProperties)
+            .Ignore(x=>x.ConcurrencyStamp)
+            .Ignore(x=>x.PartiesSpid)
             //.Ignore(x => x.Club)
             ;
-        CreateMap<JoueurDto, GetClubQuery>()
+        CreateMap<Joueur, GetClubQuery>()
             .ForMember(x => x.Numero, y => y.MapFrom(x => x.NumeroClub));
 
-        CreateMap<JoueurClassementDto, JoueurDto>()
+        CreateMap<JoueurClassementDto, Joueur>()
             .Ignore(x => x.Id)
             .Ignore(x => x.ClubId)
             .Ignore(x => x.LicenceId)
@@ -121,9 +119,13 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .Ignore(x => x.PointsOfficiels)
             .Ignore(x => x.PropositionClassement)
             .Ignore(x => x.PointsDebutSaison)
+            .Ignore(x=>x.PartiesSpid)
+            .Ignore(x => x.ExtraProperties)
+            .Ignore(x => x.ConcurrencyStamp)
+            .IgnoreAuditedObjectProperties()
             ;
 
-        CreateMap<JoueurDetailSpidClaDto, JoueurDto>()
+        CreateMap<JoueurDetailSpidClaDto, Joueur>()
             .Ignore(x => x.Id)
             .Ignore(x => x.ClubId)
             .Ignore(x => x.Classement)
@@ -137,8 +139,12 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .Ignore(x => x.PointsOfficiels)
             .Ignore(x => x.PropositionClassement)
             .Ignore(x => x.PointsDebutSaison)
+            .Ignore(x => x.PartiesSpid)
+            .Ignore(x => x.ExtraProperties)
+            .Ignore(x => x.ConcurrencyStamp)
+            .IgnoreAuditedObjectProperties()
             ;
-        CreateMap<JoueurDetailSpidDto, JoueurDto>()
+        CreateMap<JoueurDetailSpidDto, Joueur>()
             .Ignore(x => x.Id)
             .Ignore(x => x.ClubId)
             .Ignore(x => x.Classement)
@@ -160,9 +166,13 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .Ignore(x => x.PointsOfficiels)
             .Ignore(x => x.PropositionClassement)
             .Ignore(x => x.PointsDebutSaison)
+            .Ignore(x => x.PartiesSpid)
+            .Ignore(x => x.ExtraProperties)
+            .Ignore(x => x.ConcurrencyStamp)
+            .IgnoreAuditedObjectProperties()
             ;
 
-        CreateMap<JoueurDetailClassementDto, JoueurDto>()
+        CreateMap<JoueurDetailClassementDto, Joueur>()
             .Ignore(x => x.ClubId)
             .Ignore(x => x.LicenceId)
             .Ignore(x => x.Sexe)
@@ -181,7 +191,10 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .Ignore(x => x.JugeArbitre)
             .Ignore(x => x.Tech)
             .Ignore(x => x.Id)
-
+            .Ignore(x => x.PartiesSpid)
+            .Ignore(x => x.ExtraProperties)
+            .Ignore(x => x.ConcurrencyStamp)
+            .IgnoreAuditedObjectProperties()
             ;
         /*CreateMap<JoueurDetailSpidClaDto,JoueurDto>()
             .Only()
@@ -210,11 +223,7 @@ public class GirpeApplicationAutoMapperProfile : Profile
            .EndOnlyFor();*/
         CreateMap<BrowseClubQuery, SP_QUERY.BrowseClubsQuery>();
 
-        CreateMap<GetClubQuery, Club>()
-            //.IgnoreAllUnmapped()
-            .ForMember(x => x.Numero, opt => opt.MapFrom(x => x.Numero))
-
-            ;
+       
         
         CreateMap<GetClubQuery, Club>()
             .Only()
@@ -247,9 +256,27 @@ public class GirpeApplicationAutoMapperProfile : Profile
             .EndOnlyFor()
             ;
 
-        CreateMap<JoueurPartiesSpidDto, PartieSpid>();
+        /*CreateMap<JoueurPartiesSpidDto, PartieSpid>()
+            .Ignore(x=>x.PointsAcquisPerdus)
+            ;
+        */
 
+        //CreateMap< PartieSpid, JoueurPartiesSpidDto>();
 
-        CreateMap< PartieSpid, JoueurPartiesSpidDto>();
+        CreateMap<BrowseClubResponse, BrowseClubResponseDto>()
+            .ForCtorParam("Clubs", opt => opt.MapFrom(x => x.Clubs));
+
+        CreateMap<GetClubResponse, GetClubResponseDto>()
+            .ForCtorParam("Club", opt => opt.MapFrom(x => x.Club));
+
+        CreateMap<UpdateClubForJoueurResponse, UpdateClubForJoueurResponseDto>()
+            .ForCtorParam("Club", opt => opt.MapFrom(x => x.Club))
+            .ForCtorParam("Joueur", opt => opt.MapFrom(x => x.Joueur));
+
+        CreateMap<GetJoueurResponse, GetJoueurResponseDto>()
+            .ForCtorParam("Joueur", opt => opt.MapFrom(x => x.Joueur));
+
+        CreateMap<BrowseJoueurResponse, BrowseJoueurResponseDto>()
+            .ForCtorParam("Joueurs", opt => opt.MapFrom(x => x.Joueurs));
     }
 }

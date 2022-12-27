@@ -22,13 +22,16 @@ public class ClubController : GirpeController/*, IClubAppService*/
 
 
     [HttpGet("all")]
-    public Task<BrowseClubResponse> GetAllAsync([FromQuery] BrowseClubQuery query) =>Service.GetAllAsync(query);
+    public async  Task<BrowseClubResponseDto> GetAllAsync([FromQuery] BrowseClubQuery query) 
+        =>ObjectMapper.Map< BrowseClubResponse,BrowseClubResponseDto>(await Service.GetAllAsync(query));
 
 
     [HttpGet("by_number")]
-    public Task<GetClubResponse> GetAsync([FromQuery] GetClubQuery query)=> Service.GetAsync(query);
+    public async Task<GetClubResponseDto> GetAsync([FromQuery] GetClubQuery query)
+        =>  ObjectMapper.Map< GetClubResponse,GetClubResponseDto>(await Service.GetAsync(query));
 
     [HttpGet("update_for_joueur")]
-    public Task<UpdateClubForJoueurResponse> UpdateForJoueur([FromQuery] UpdateClubForJoueurQuery query) => Service.UpdateForJoueur(query);
+    public async Task<UpdateClubForJoueurResponseDto> UpdateForJoueur([FromQuery] UpdateClubForJoueurQuery query) 
+        => ObjectMapper.Map< UpdateClubForJoueurResponse,UpdateClubForJoueurResponseDto>(await  Service.UpdateForJoueur(query));
 }
 

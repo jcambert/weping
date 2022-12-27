@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using WePing.Girpe.Joueurs;
-using WePing.Girpe.Joueurs.Dto;
 using WePing.Girpe.Joueurs.Queries;
 using WePing.Girpe.Joueurs.Queries.Impl;
 using WePing.Girpe.Services;
@@ -27,18 +24,18 @@ public class UpdateJoueurHandler : BaseHandler<UpdateJoueurQuery, UpdateJoueurRe
         var query = queryable.Filter(mappedRequest);
 
         var joueur = await AsyncExecuter.FirstOrDefaultAsync(query);
-        JoueurDto joueurDto=new();
+        //JoueurDto joueurDto=new();
         bool from_db = joueur != null;
         if (joueur != null && !string.IsNullOrEmpty(joueur.Licence))
         {
-            ObjectMapper.Map(joueur, joueurDto);
-            await UpdateJoueurService.Update(joueurDto,request.DetailOptions,cancellationToken);
-            ObjectMapper.Map(joueurDto, joueur);
+            //ObjectMapper.Map(joueur, joueurDto);
+            await UpdateJoueurService.Update(joueur,request.DetailOptions,cancellationToken);
+            //ObjectMapper.Map(joueurDto, joueur);
             await Repository.UpdateAsync(joueur,true,cancellationToken);
 
             
         }
         
-        return new UpdateJoueurResponse(joueurDto) { FromDatabase = from_db };
+        return new UpdateJoueurResponse(joueur) { FromDatabase = from_db };
     }
 }

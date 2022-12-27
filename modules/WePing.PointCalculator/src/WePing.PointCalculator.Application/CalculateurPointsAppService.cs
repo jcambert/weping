@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Services;
 using WeUtilities;
 
 namespace WePing.PointCalculator;
-
+//[RemoteService(IsEnabled = true, IsMetadataEnabled = true, Name = PointCalculatorRemoteServiceConsts.RemoteServiceName + "Calc")]
 [Dependency(ServiceLifetime.Scoped), ExposeServices(typeof(ICalculateurPoints))]
 public class CalculateurPointsAppService : PointCalculatorAppService, ICalculateurPoints
 {

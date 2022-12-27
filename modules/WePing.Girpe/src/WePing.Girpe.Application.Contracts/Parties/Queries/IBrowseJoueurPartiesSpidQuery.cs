@@ -1,4 +1,5 @@
-﻿using WePing.Girpe.Parties.Dto;
+﻿using System.Collections.Generic;
+using WePing.Girpe.Parties.Dto;
 
 namespace WePing.Girpe.Parties.Queries;
 
@@ -7,4 +8,4 @@ internal interface IBrowseJoueurPartiesSpidQuery : IGirpeQuery<BrowseJoueurParti
     string Licence { get; set; }
 }
 
-public sealed record BrowseJoueurPartiesSpidResponse(JoueurPartiesSpidDto Parties) :GirpeResponse;
+public sealed record BrowseJoueurPartiesSpidResponse(List<PartieSpid> Parties) :GirpeResponse;

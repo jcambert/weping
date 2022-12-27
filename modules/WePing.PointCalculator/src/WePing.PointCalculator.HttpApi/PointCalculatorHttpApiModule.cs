@@ -28,5 +28,13 @@ public class PointCalculatorHttpApiModule : AbpModule
                 .Get<PointCalculatorResource>()
                 .AddBaseTypes(typeof(AbpUiResource));
         });
+
+       /* Configure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options
+                .ConventionalControllers
+                
+                .Create(typeof(PointCalculatorApplicationModule).Assembly);
+        });*/
     }
 }

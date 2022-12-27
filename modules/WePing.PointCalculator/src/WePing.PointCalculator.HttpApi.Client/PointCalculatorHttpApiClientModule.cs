@@ -22,5 +22,7 @@ public class PointCalculatorHttpApiClientModule : AbpModule
             options.FileSets.AddEmbedded<PointCalculatorHttpApiClientModule>();
         });
 
+
+
     }
 }

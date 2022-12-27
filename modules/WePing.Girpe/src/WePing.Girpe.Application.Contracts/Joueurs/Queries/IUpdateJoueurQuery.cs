@@ -1,6 +1,4 @@
-﻿using WePing.Girpe.Joueurs.Dto;
-
-namespace WePing.Girpe.Joueurs.Queries;
+﻿namespace WePing.Girpe.Joueurs.Queries;
 
 public interface IUpdateJoueurQuery:IGirpeQuery<UpdateJoueurResponse>
 {
@@ -10,4 +8,4 @@ public interface IUpdateJoueurQuery:IGirpeQuery<UpdateJoueurResponse>
     UpdateJoueurFromSpidOption DetailOptions { get; set; } 
 }
 
-public sealed record UpdateJoueurResponse(JoueurDto Joueur) : GirpeResponse;
+public sealed record UpdateJoueurResponse(Joueur Joueur) : GirpeResponse;

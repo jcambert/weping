@@ -89,14 +89,17 @@ public class Joueur : AuditedAggregateRoot<Guid> //Entity<Guid>
     public string PropositionClassement { get; set; }
     public string PointsDebutSaison { get; set; }
 
-    public virtual List<PartieSpid> PartiesSpid{get;protected set;}
+    public virtual List<PartieSpid> PartiesSpid { get; protected set; } = new();
 
     public void AddPartieSpid(string date,string nomPrenomAdv,string classementAdversaire,string epreuve,string victoireOuDefaite,string forfait,double points)
     {
+        if (PartiesSpid.IsNull())
+            PartiesSpid = new();
         var partie=PartiesSpid.FirstOrDefault(x => x.JoueurId == Id && x.Date == date && x.NomPrenomAdversaire == nomPrenomAdv);
         if (partie == null)
         {
-            PartiesSpid.Add(new(Id,date,nomPrenomAdv));
+            partie = new(Id, date, nomPrenomAdv);
+            PartiesSpid.Add(partie);
         }
         partie.ClassementAdversaire = classementAdversaire;
         partie.Epreuve = epreuve;

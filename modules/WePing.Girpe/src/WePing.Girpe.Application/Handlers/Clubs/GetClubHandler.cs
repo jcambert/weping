@@ -34,46 +34,46 @@ public class GetClubHandler : BaseHandler<GetClubQuery, GetClubResponse>
         queryable = queryable.Filter(mappedRequest);
         //Prepare a query   
         //var query = from club in queryable where club.Numero == request.Numero select new { club };
-        var query = from club in queryable select new { club };
+        //var query = from club in queryable select new { club };
         //Execute the query and get the book with author
-        var queryResult = await AsyncExecuter.FirstOrDefaultAsync(query);
-        GIRPE_DTO.ClubDto clubDto;
-        bool from_db = queryResult!=null;
-        if (queryResult == null)
+        var club= await AsyncExecuter.FirstOrDefaultAsync(queryable);
+        //GIRPE_DTO.ClubDto clubDto;
+        bool from_db = club!=null;
+        if (club == null)
         {
             //Club not exist in database
             //Retrieve it from SPID 
-            clubDto = await GetClubFromSpid(request.Numero);
-            if (clubDto == null)
+            club = await GetClubFromSpid(request.Numero);
+            if (club == null)
                 //Club didn't exist on SPID
                 throw new EntityNotFoundException(typeof(Club), request.Numero);
-            await GetClubDetailFromSpid(clubDto);
+            await GetClubDetailFromSpid(club);
             //while club didn't exist in DB, insert it!
-            var result = await Repository.InsertAsync(ObjectMapper.Map<GIRPE_DTO.ClubDto, Club>(clubDto));
+            await Repository.InsertAsync(club);
        
             //
-            clubDto = ObjectMapper.Map<Club,GIRPE_DTO.ClubDto>(result);
+            //clubDto = ObjectMapper.Map<Club,GIRPE_DTO.ClubDto>(result);
         }
-        else
-            clubDto = ObjectMapper.Map<Club, GIRPE_DTO.ClubDto>(queryResult.club);
-        return new GetClubResponse(clubDto) { FromDatabase=from_db};
+        //else
+        //    clubDto = ObjectMapper.Map<Club, GIRPE_DTO.ClubDto>(queryResult.club);
+        return new GetClubResponse(club) { FromDatabase=from_db};
     }
-    protected async Task<GIRPE_DTO.ClubDto> GetClubFromSpid(string numero)
+    protected async Task<Club> GetClubFromSpid(string numero)
     {
         var query = LazyServiceProvider.LazyGetRequiredService<SmartPing.Domain.Clubs.Queries.IGetClubQuery>();
         query.Numero = numero;
-        var club = await Spid.GetClub(query);
+        var clubSpid = await Spid.GetClub(query);
 
-        var clubDto = ObjectMapper.Map<SP_CLUB_DTO.ClubDto, GIRPE_DTO.ClubDto>(club);
-        return clubDto;
+        var club = ObjectMapper.Map<SP_CLUB_DTO.ClubDto, Club>(clubSpid);
+        return club;
     }
-    protected async Task GetClubDetailFromSpid(GIRPE_DTO.ClubDto dto)
+    protected async Task GetClubDetailFromSpid(Club club)
     {
         var query = LazyServiceProvider.LazyGetRequiredService<SmartPing.Domain.ClubDetails.Queries.IGetClubDetailQuery>();
-        query.Club = dto.Numero;
-        var club = await Spid.GetClubDetail(query);
+        query.Club = club.Numero;
+        var clubSpidDetail = await Spid.GetClubDetail(query);
 
-        ObjectMapper.Map<SP_DETAIL_DTO.ClubDetailDto, GIRPE_DTO.ClubDto>(club, dto);
+        ObjectMapper.Map<SP_DETAIL_DTO.ClubDetailDto, Club>(clubSpidDetail, club);
 
     }
 }
