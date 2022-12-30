@@ -2,7 +2,43 @@
 @using Microsoft.Extensions.Localization
 @using global::WePing.PointCalculator.Localization
 @inject IStringLocalizer<PointCalculatorResource> L
+@inject ICalculateurPoints _service
 @{
+    double score=0;
+    double me=0;
+    double adv=0;
+    async Task Calculate()
+    {
+        _service.Coeficient = 1;
+       score= await _service.CalculateAsync(me, adv, true);
+    }
 }
 <h1>PointCalculator</h1>
 <p>@L["SamplePageMessage"]</p>
+TEST
+
+<Fields>
+    <Field>
+        <FieldLabel>Points Joueur 1</FieldLabel>
+        <TextEdit @bind-value="me">
+            <FieldHelp>Classement en Points</FieldHelp>
+        </TextEdit>
+    </Field>
+    <Field>
+        <FieldLabel>Points Joueur 2</FieldLabel>
+        <TextEdit @bind-value="adv">
+            <FieldHelp>Classement en Points</FieldHelp>
+        </TextEdit>
+    </Field>
+    <Buttons>
+        <Button Color="Color.Success" @onclick="Calculate">Victoire Joueur 1</Button>
+        <Button Color="Color.Danger" @onclick="Calculate">Victoire Joueur 2</Button>
+    </Buttons>
+</Fields>
+<Fields>
+    <Field>
+        <Text @bind-value="score" >
+
+        </Text>
+    </Field>
+</Fields>

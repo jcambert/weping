@@ -52,6 +52,9 @@ using Volo.Abp.VirtualFileSystem;
 using WePing.SmartPing.Blazor.Server;
 using WePing.Girpe.Blazor.Server;
 using WePing.PointCalculator.Blazor.Server;
+using Volo.Abp.AspNetCore.Components.Web.BasicTheme;
+
+
 
 namespace WePing.Blazor;
 
@@ -70,10 +73,12 @@ namespace WePing.Blazor;
     typeof(AbpIdentityBlazorServerModule),
     typeof(AbpTenantManagementBlazorServerModule),
     typeof(AbpSettingManagementBlazorServerModule)
+
    )]
     [DependsOn(typeof(SmartPingBlazorServerModule))]
     [DependsOn(typeof(GirpeBlazorServerModule))]
     [DependsOn(typeof(PointCalculatorBlazorServerModule))]
+    [DependsOn(typeof(AbpAspNetCoreComponentsWebBasicThemeModule))]
     public class WePingBlazorModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -207,13 +212,13 @@ namespace WePing.Blazor;
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
+            options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
+            /*options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
             options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
             options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
             options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
             options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
-            options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
             options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
             options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
             options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
@@ -226,7 +231,7 @@ namespace WePing.Blazor;
             options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
             options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
             options.Languages.Add(new LanguageInfo("es", "es", "Español"));
-            options.Languages.Add(new LanguageInfo("el", "el", "Ελληνικά"));
+            options.Languages.Add(new LanguageInfo("el", "el", "Ελληνικά"));*/
         });
     }
 
